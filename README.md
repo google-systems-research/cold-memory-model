@@ -1,53 +1,90 @@
-# New Project Template
+# Cold Memory Model
 
-This repository contains a template that can be used to seed a repository for a
-new Google open source project.
+This project provides a framework for analyzing cold memory access traces and synthesizing new traces based on extracted locality parameters or hypothetic traces by sweeping the parameters. It allows for the generation of traces with different characteristics, which can be used for simulating and evaluating far memory systems.
 
-See [go/releasing](http://go/releasing) (available externally at
-https://opensource.google/documentation/reference/releasing) for more information about
-releasing a new Google open source project.
+## Project Structure
 
-This template uses the Apache license, as is Google's default.  See the
-documentation for instructions on using alternate license.
-
-## How to use this template
-
-1. Clone it from GitHub.
-    * There is no reason to fork it.
-1. Create a new local repository and copy the files from this repo into it.
-1. Modify README.md and docs/contributing.md to represent your project, not the
-   template project.
-1. Develop your new project!
-
-``` shell
-git clone https://github.com/google/new-project
-mkdir my-new-thing
-cd my-new-thing
-git init
-cp -r ../new-project/* ../new-project/.github .
-git add *
-git commit -a -m 'Boilerplate for new Google open source project'
+```
+/
+├── input_traces/         # Input memory access traces (CSV format)
+├── locality_params/      # Extracted locality parameters from traces
+├── output_traces/        # Synthesized output traces
+├── configs/              # Configuration files for trace synthesis
+├── compressibility/      # Compressibility data for different block size and algorithms
+├── analyze_traces.py     # Script to analyze traces and extract parameters
+├── synthesize_traces.py  # Script to synthesize new traces
+└── ...                   # Other scripts
 ```
 
-## Source Code Headers
+## Workflow
 
-Every file containing source code must include copyright and license
-information. This includes any JS/CSS files that you might be serving out to
-browsers. (This is to help well-intentioned people avoid accidental copying that
-doesn't comply with the license.)
+The typical workflow consists of two main steps:
 
-Apache header:
+1.  **Analysis**: Use `analyze_traces.py` to process an input trace and extract its locality parameters. This generates both a "full" set of parameters and a "reduced" (modeled) set.
+2.  **Synthesis**: Use `synthesize_traces.py` to generate new traces. This can be done in two ways:
+    *   **Reconstruct**: Re-synthesize a trace based on the parameters extracted from a real trace. This is useful for validating the model.
+    *   **Generate**: Synthesize a trace from a configuration file, allowing for the creation of artificial traces with specific, mix-and-match characteristics.
 
-    Copyright 2024 Google LLC
+---
 
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
+## How to Use
 
-        https://www.apache.org/licenses/LICENSE-2.0
+### 1. Analyzing Traces
 
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
+The `analyze_traces.py` script extracts locality parameters from memory access traces.
+
+**Usage:**
+
+```bash
+python analyze_traces.py [--files TRACE_FILE_1.csv TRACE_FILE_2.csv]
+```
+
+-   Place your input trace files (in CSV format) in the `input_traces/` directory.
+-   Run the script. If no files are specified with the `--files` flag, it will process all `.csv` files in the `input_traces/` directory.
+-   The script will output extracted parameters (`full_parameters.pkl`, `reduced_parameters.pkl`, and CSV files) to the `locality_params/<trace_name>/` directory. It also generates various plots for analysis in the `figures` subdirectory.
+
+### 2. Synthesizing Traces
+
+The `synthesize_traces.py` script generates new memory traces, each access assigned with compression ratio and decompression latency. Output traces can be used as a input to trace-driven simulations.
+
+#### Reconstruct Mode
+
+This mode synthesizes a trace from parameters that were previously extracted by `analyze_traces.py`.
+
+**Usage:**
+
+```bash
+python synthesize_traces.py --reconstruct <trace_name> [--block_sizes "64,128,..."] [--algorithms "lz4,zstd"]
+```
+
+-   `<trace_name>` is the name of the trace (without the `.csv` extension) you want to reconstruct (e.g., `trace_lega3`).
+-   This will generate three sets of traces in the `output_traces/reconstruct/<trace_name>/` directory:
+    -   `base/`: Traces generated from the original, unprocessed trace data.
+    -   `full/`: Traces synthesized from the "full" extracted parameters.
+    -   `reduced/`: Traces synthesized from the "reduced" (modeled) parameters.
+
+#### Generate Mode
+
+This mode synthesizes a trace based on a JSON configuration file.
+
+**Usage:**
+
+```bash
+python synthesize_traces.py --generate <config_file.json> [--variants "1,1,3,3,1"] [--block_sizes "64,128,..."] [--algorithms "lz4,zstd"]
+```
+
+-   `<config_file.json>` is the name of the configuration file in the `configs/` directory (e.g., `example.json`).
+-   `--variants`: A comma-separated string of 5 integers specifying the parameter variants to use from the config file for:
+    1.  Working Set Size
+    2.  Access Count Distribution
+    3.  Markov Matrix (Temporal Locality)
+    4.  Bit Flip Rate (Spatial Locality)
+    5.  Short Interval Ratio (Timestamp information)
+    Big variant number indicates larger working set, higher average access, higher locality, and bursty timestamps.
+-   The output traces will be saved in `output_traces/<config_name>/`.
+
+### Compressibility Data
+
+The `compressibility/` directory contains compression ratio and decompression latency data for `lz4` and `zstd` compression algorithms at different block sizes. The data is obtained from FPGA rtl simulation with Xilinx Vivado HLS, and scaled to match the ASIC design. This data is used by the synthesis script to generate realistic timestamps for the memory accesses.
+
+This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).

@@ -1,0 +1,4 @@
+output_traces/*
+locality_params/*
+compressibility/*
+input_traces/*
