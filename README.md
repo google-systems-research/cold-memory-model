@@ -40,8 +40,11 @@ python analyze_traces.py [--files TRACE_FILE_1.csv TRACE_FILE_2.csv]
 ```
 
 -   Place your input trace files (in CSV format) in the `input_traces/` directory.
+-   The input trace must include timestamp (in us) and physical_address (in hex) column.
 -   Run the script. If no files are specified with the `--files` flag, it will process all `.csv` files in the `input_traces/` directory.
 -   The script will output extracted parameters (`full_parameters.pkl`, `reduced_parameters.pkl`, and CSV files) to the `locality_params/<trace_name>/` directory. It also generates various plots for analysis in the `figures` subdirectory.
+-   The RMS error of the model from reducing the number of parameters are reported in `locality_params/reduced_param_errors.csv`.
+-   Reduced parameters are saved in `.json` format (`locality_params/<trace_name>/reduced_parameters.json`), so that it can be used as a reference for the trace synthesis.
 
 ### 2. Synthesizing Traces
 
@@ -57,15 +60,24 @@ This mode synthesizes a trace from parameters that were previously extracted by 
 python synthesize_traces.py --reconstruct <trace_name> [--block_sizes "64,128,..."] [--algorithms "lz4,zstd"]
 ```
 
--   `<trace_name>` is the name of the trace (without the `.csv` extension) you want to reconstruct (e.g., `trace_lega3`).
+-   `<trace_name>` is the name of the trace (without the `.csv` extension) you want to reconstruct (e.g., `TRACE_FILE_1`).
 -   This will generate three sets of traces in the `output_traces/reconstruct/<trace_name>/` directory:
     -   `base/`: Traces generated from the original, unprocessed trace data.
     -   `full/`: Traces synthesized from the "full" extracted parameters.
     -   `reduced/`: Traces synthesized from the "reduced" (modeled) parameters.
+-   All intermidiate data (e.g., multi granular reuse distances) are saved to `output_traces/reconstruct/<reduced/full>_traces.pkl` for deeper analysis.
+-   Fidelity of the model can be evaluated through comparing three types of traces for all traces available with the following command:
+
+```bash
+python synthesize_traces.py --compare
+```
+
+- We provide comparisons on reuse distance CDFs, footprint, and cache hit rates under `output_traces/reconstruct/comparison/`.
+
 
 #### Generate Mode
 
-This mode synthesizes a trace based on a JSON configuration file.
+This mode synthesizes a trace based on a JSON configuration file. We provide an example configuration file that is used in the paper.
 
 **Usage:**
 
@@ -80,11 +92,10 @@ python synthesize_traces.py --generate <config_file.json> [--variants "1,1,3,3,1
     3.  Markov Matrix (Temporal Locality)
     4.  Bit Flip Rate (Spatial Locality)
     5.  Short Interval Ratio (Timestamp information)
+
     Big variant number indicates larger working set, higher average access, higher locality, and bursty timestamps.
 -   The output traces will be saved in `output_traces/<config_name>/`.
 
 ### Compressibility Data
 
 The `compressibility/` directory contains compression ratio and decompression latency data for `lz4` and `zstd` compression algorithms at different block sizes. The data is obtained from FPGA rtl simulation with Xilinx Vivado HLS, and scaled to match the ASIC design. This data is used by the synthesis script to generate realistic timestamps for the memory accesses.
-
-This is not an officially supported Google product. This project is not eligible for the [Google Open Source Software Vulnerability Rewards Program](https://bughunters.google.com/open-source-security).

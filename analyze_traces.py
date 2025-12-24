@@ -65,7 +65,7 @@ def main():
       full_params = locality.extract_full_parameters(clean_df, trace_name, figure_dir)
       file_io.save_pickle(full_params, full_param_path)
 
-    plotting.plot_and_compare_cdfs(full_params, trace_name, figure_dir)
+    plotting.plot_cdfs(full_params, trace_name, figure_dir)
 
     reduced_param_path = output_dir / 'reduced_parameters.pkl'
     reduced_params = file_io.load_pickle(reduced_param_path)
@@ -73,7 +73,7 @@ def main():
       reduced_params = reduction.reduce_parameters(full_params, trace_name, figure_dir)
       file_io.save_pickle(reduced_params, reduced_param_path)
     
-    file_io.save_reduced_params_to_csv(reduced_params, output_dir)
+    file_io.save_reduced_params_to_json(reduced_params, output_dir, trace_name)
 
     logging.info(f"--- Finished processing {trace_name} ---")
 

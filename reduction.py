@@ -472,7 +472,7 @@ def _reduce_short_interval_ratio(full_params, trace_name, output_dir):
     logging.info("Reducing short interval ratio...")
     short_interval_ratio = full_params['short_ratio']
     x_data = [0, 5, 11]
-    y_data = [short_interval_ratio[0][0], short_interval_ratio[5][0], short_interval_ratio[11][0]]
+    y_data = [short_interval_ratio[0], short_interval_ratio[5], short_interval_ratio[11]]
     p = np.polyfit(x_data, y_data, 2)
     poly = np.poly1d(p)
     reduced_short_interval_ratio = [float(poly(x)) for x in range(0, 12)]
@@ -493,6 +493,8 @@ def reduce_parameters(full_params, trace_name, output_dir):
       dict: The reduced parameters.
   """
   logging.info("Reducing parameters...")
+
+  num_blocks = full_params['num_pages']
 
   # Reduce access count distribution
   (x_dist, y_dist), (s, w, edges) = _reduce_access_count_distribution(
@@ -520,6 +522,7 @@ def reduce_parameters(full_params, trace_name, output_dir):
   file_io.write_errors_to_csv(trace_name, errors, output_dir)
 
   reduced_params = {
+    'num_pages': num_blocks,
     'reduced_access_count_dist': (x_dist, y_dist),
     'access_params': (s,w,edges),
     'reduced_markov_matrix': fitted_M_mm,

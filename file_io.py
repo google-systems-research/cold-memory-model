@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
 import logging
 import csv
 from pathlib import Path
@@ -20,52 +21,101 @@ from typing import Dict, Any, List
 import os
 import pickle
 
-def save_reduced_params_to_csv(reduced_params: Dict[str, Any], output_dir: Path):
+def restore_locality_parameters(trace_name):
     """
-    Saves key reduced locality parameters to human-readable CSV files.
-
-    Args:
-        reduced_params (Dict[str, Any]): The dictionary containing reduced parameters.
-        output_dir (Path): The directory where the CSV files will be saved.
+    Restores locality parameters for a given trace.
     """
-    logging.info("Saving reduced parameters to CSV files...")
-    csv_output_dir = output_dir / "reduced_params_csv"
-    csv_output_dir.mkdir(exist_ok=True)
+    logging.info(f"Restoring parameters for trace: {trace_name}")
+    reduced_params_path = os.path.join('locality_params', trace_name, 'reduced_parameters.pkl')
+    full_params_path = os.path.join('locality_params', trace_name, 'full_parameters.pkl')
 
-    # 1. Save Access Parameters
-    s_list, w_list, edges = reduced_params['access_params']
-    access_df = pd.DataFrame({
-        'edge_start': edges[:-1],
-        'edge_end': edges[1:],
-        's': s_list,
-        'w': w_list
-    })
-    access_df.to_csv(csv_output_dir / "access_params.csv", index=False)
+    if os.path.exists(reduced_params_path) and os.path.exists(full_params_path):
+        with open(reduced_params_path, 'rb') as f:
+            reduced_params = pickle.load(f)
+        with open(full_params_path, 'rb') as f:
+            full_params = pickle.load(f)
+        
+        logging.info(f"Loaded reduced/full parameters for trace: {trace_name}")
+        return full_params, reduced_params
+    else:
+        logging.warning(f"Could not find parameter files for trace: {trace_name}")
+        return None, None
 
-    # 2. Save Markov Model Parameters
-    best_params_mm, peak_list_mm = reduced_params['markov_params']
-    pd.DataFrame([best_params_mm]).to_csv(csv_output_dir / "markov_model_params.csv", index=False)
-    
-    if peak_list_mm:
-        peaks_df = pd.DataFrame(peak_list_mm, columns=['type', 'row', 'col', 'theta'])
-        peaks_df.to_csv(csv_output_dir / "markov_model_peaks.csv", index=False)
+def round_floats(obj, precision=3):
+    if isinstance(obj, float):
+        return round(obj, precision)
+    elif isinstance(obj, dict):
+        return {k: round_floats(v, precision) for k, v in obj.items()}
+    elif isinstance(obj, (list, tuple)):
+        return [round_floats(x, precision) for x in obj]
+    return obj
 
-    # 3. Save Bit Flip Model Parameters
-    popt, peak_coords_bfr = reduced_params['bit_flip_params']
-    pd.DataFrame([popt]).to_csv(csv_output_dir / "bit_flip_model_params.csv", index=False)
+def save_reduced_params_to_json(reduced_params: Dict[str, Any], output_dir: Path, trace_name: str):
+  logging.info("Saving reduced parameters to JSON files...")
+  output_filename = output_dir / f"reduced_params_{trace_name}.json"
+  data = {
+    "working_set_sizes": {},
+    "access_count_distribution": {},
+    "markov_matrix": {},
+    "bit_flip_rate": {},
+    "short_interval_ratio": {}
+  }
+  # 1. Working Set Size
+  ws_size = reduced_params['num_pages']
+  data["working_set_sizes"][trace_name] = ws_size
+  # 2. Access Count Distribution
+  s_list, w_list, _ = reduced_params['access_params']
+  pages_in_percent = 100 * s_list / ws_size
+  avg_accesses = w_list / s_list
+  data["access_count_distribution"][trace_name] = {
+    "avg_accesses": avg_accesses.tolist(),
+    "pages_in_percent": pages_in_percent.tolist()
+  }
+  # 3. Markov Matrix
+  best_params_mm, peak_list_mm = reduced_params['markov_params']
+  mm_sigmas = best_params_mm[0:8]
+  mm_amplitudes = best_params_mm[8:]
+  mm_col0_peaks = []
+  mm_col11_peaks = []
+  mm_diag_peaks = []
+  for peak in peak_list_mm:
+    peak_type, row, col, theta = peak
+    if peak_type == 'col' and col == 0:
+      mm_col0_peaks.append(row)
+    elif peak_type == 'col' and col != 0:
+      mm_col11_peaks.append(row)
+    elif peak_type == 'diag':
+      mm_diag_peaks.append(row)
+  data["markov_matrix"][trace_name] = {
+    "sigmas": mm_sigmas.tolist(),
+    "col0_peaks": mm_col0_peaks,
+    "col11_peaks": mm_col11_peaks,
+    "diag_peaks": mm_diag_peaks,
+    "amplitudes": mm_amplitudes.tolist()
+  }
+  # 4. Bit Flip Rate
+  popt, peak_coords_bfr = reduced_params['bit_flip_params']
+  bf_peak_coords = peak_coords_bfr.tolist() if peak_coords_bfr.size > 0 else []
+  bf_sigmas = popt[0:4]
+  bf_amplitudes = popt[4:]
+  data["bit_flip_rate"][trace_name] = {
+    "peak_coords": bf_peak_coords,
+    "sigmas": bf_sigmas.tolist(),
+    "amplitudes": bf_amplitudes.tolist()
+  }
+  # 5. Short Interval Ratio
+  p = reduced_params['reduced_short_interval_ratio']
+  si_vertices = [[0, float(p[0])], [5, float(p[5])], [11, float(p[11])]]
+  data["short_interval_ratio"][trace_name] = {
+    "vertices": si_vertices
+  }
 
-    if peak_coords_bfr.size > 0:
-        peaks_df_bfr = pd.DataFrame(peak_coords_bfr, columns=['row', 'col'])
-        peaks_df_bfr.to_csv(csv_output_dir / "bit_flip_model_peaks.csv", index=False)
+  rounded_data = round_floats(data, precision=3)
 
-    # 4. Save Short Ratio Coefficients
-    # The 'short_ratio_params' in reduced_params is a numpy array from polyfit.
-    if reduced_params['short_ratio_params'].size > 0:
-        short_ratio_coeffs = reduced_params['short_ratio_params']
-        coeffs_df = pd.DataFrame([short_ratio_coeffs], columns=[f'coeff_{i}' for i in range(len(short_ratio_coeffs))])
-        coeffs_df.to_csv(csv_output_dir / "short_ratio_coeffs.csv", index=False)
+  with open(output_filename, "w") as f:
+    json.dump(rounded_data, f, indent=4)
 
-    logging.info(f"Successfully saved reduced parameters in {csv_output_dir}")
+  print(f"JSON saved to {output_filename}")
 
 def write_errors_to_csv(trace_name, errors, output_dir):
     """

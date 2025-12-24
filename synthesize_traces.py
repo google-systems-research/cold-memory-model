@@ -24,27 +24,8 @@ import numpy as np
 from locality import bin_reuse_distance, generate_cdf_inf
 from synthesis import generate_page_access_trace, get_cacheline_address, generate_simtrace, parse_compressibility, synth_timestamps
 from reduction import reconstruct_counts_from_intervals, _model_markov_matrix, _model_bit_flip_matrix
-
-def restore_locality_parameters(trace_name):
-    """
-    Restores locality parameters for a given trace.
-    """
-    logging.info(f"Restoring from reduced parameters for trace: {trace_name}")
-    reduced_params_path = os.path.join('locality_params', trace_name, 'reduced_parameters.pkl')
-    full_params_path = os.path.join('locality_params', trace_name, 'full_parameters.pkl')
-
-    if os.path.exists(reduced_params_path) and os.path.exists(full_params_path):
-        with open(reduced_params_path, 'rb') as f:
-            reduced_params = pickle.load(f)
-        with open(full_params_path, 'rb') as f:
-            full_params = pickle.load(f)
-        
-        logging.info(f"Loaded reduced parameters for trace: {trace_name}")
-        logging.info(f"Loaded full parameters for trace: {trace_name}")
-        return full_params, reduced_params
-    else:
-        logging.warning(f"Could not find parameter files for trace: {trace_name}")
-        return None, None
+from comparison import compare_traces
+from file_io import restore_locality_parameters
 
 def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_str, no_cache=False):
     """
@@ -448,13 +429,6 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
             f.write('\n'.join(sim_trace.astype(str)))
 
 
-
-def analyze_traces(full_params, synthesized_params):
-    """
-    Performs analysis comparing full parameters and synthesized traces.
-    """
-    pass
-
 def main():
     """
     Main function to run the trace synthesis process.
@@ -463,7 +437,7 @@ def main():
         level=logging.INFO,
         format='%(asctime)s - %(levelname)s - %(message)s',
         handlers=[
-            logging.FileHandler("analyzer.log"),
+            logging.FileHandler("synthesizer.log"),
             logging.StreamHandler()
         ]
     )
@@ -471,7 +445,7 @@ def main():
     parser = argparse.ArgumentParser(description="Synthesize traces from locality parameters.")
     group = parser.add_mutually_exclusive_group(required=True)
     group.add_argument('--reconstruct', nargs='+', help='List of trace names to reconstruct.')
-    group.add_argument('--analyze', action='store_false', help='Analyze reconstructed traces.')
+    group.add_argument('--compare', action='store_true', help='Analyze and compare reconstructed traces.')
     group.add_argument('--generate', type=str, help='Generate a trace from a specific config file in the configs folder.')
     parser.add_argument('--variants', type=str, default='0,0,0,0,0', help='Comma-separated list of variant indices to use for generation.')
     parser.add_argument('--no-cache', action='store_true', help='Do not read from cache and force regeneration.')
@@ -492,7 +466,7 @@ def main():
             os.makedirs(f'./output_traces/reconstruct/{trace_name}/reduced', exist_ok=True)
             os.makedirs(f'./output_traces/reconstruct/{trace_name}/full', exist_ok=True)
             os.makedirs(f'./output_traces/reconstruct/{trace_name}/base', exist_ok=True)
-            os.makedirs(f'./output_traces/reconstruct/analysis', exist_ok=True)
+            os.makedirs(f'./output_traces/reconstruct/comparison', exist_ok=True)
 
             full_params, reduced_params = restore_locality_parameters(trace_name)
             if full_params and reduced_params:
@@ -514,6 +488,12 @@ def main():
             logging.info(f"Trace synthesis complete for config: {config_path}.")
         else:
             logging.warning(f"Skipping synthesis for config: {config_path} due to loading error or invalid variants.")
+
+    elif args.compare:
+        logging.info("Analyzing and comparing reconstructed traces.")
+        compare_traces()
+        logging.info("Analysis and comparison complete.")
+
 
 
 if __name__ == "__main__":
