@@ -1,4 +1,6 @@
 output_traces/*
 locality_params/*
-compressibility/*
+compressibility/64*
+compressibility/128*
+compressibility/*pickle
 input_traces/*
