@@ -16,6 +16,7 @@ import json
 import logging
 import csv
 from pathlib import Path
+import re
 import pandas as pd
 from typing import Dict, Any, List
 import os
@@ -49,6 +50,14 @@ def round_floats(obj, precision=3):
     elif isinstance(obj, (list, tuple)):
         return [round_floats(x, precision) for x in obj]
     return obj
+
+def collapse_match(match):
+    # Extract the content inside the brackets
+    content = match.group(1)
+    # Split by comma, strip whitespace, and join back with ", "
+    # This removes the newlines and aligns them horizontally
+    compact_content = ", ".join(item.strip() for item in content.split(','))
+    return f"[{compact_content}]"
 
 def save_reduced_params_to_json(reduced_params: Dict[str, Any], output_dir: Path, trace_name: str):
   logging.info("Saving reduced parameters to JSON files...")
@@ -111,10 +120,15 @@ def save_reduced_params_to_json(reduced_params: Dict[str, Any], output_dir: Path
   }
 
   rounded_data = round_floats(data, precision=3)
+  json_str = json.dumps(rounded_data, indent=4)
+  # Regex explanation:
+  # \[           -> Find a literal opening bracket
+  # ([^\[\]]+)   -> Capture everything inside that is NOT another bracket (handles nested lists safely)
+  # \]           -> Find a literal closing bracket
+  json_str = re.sub(r'\[([^\[\]]+)\]', collapse_match, json_str)
 
   with open(output_filename, "w") as f:
-    json.dump(rounded_data, f, indent=4)
-
+    f.write(json_str)
   print(f"JSON saved to {output_filename}")
 
 def write_errors_to_csv(trace_name, errors, output_dir):
