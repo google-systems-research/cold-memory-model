@@ -426,7 +426,8 @@ def _reduce_bit_flip_matrix(full_params, trace_name, output_dir):
     original_matrix_bfr = np.vstack(spatial_param[:-1])
     original_matrix_bfr = 1 - original_matrix_bfr
 
-    if trace_name == "todo:check small matrix":
+    # if lt value [0,-1] s inf or NaN, fix it
+    if math.isinf(original_matrix_bfr[0, -1]) or math.isnan(original_matrix_bfr[0, -1]):
         original_matrix_bfr[0, -1] = original_matrix_bfr[0, -2]
     N_bfr = 6
     M_bfr = 11
