@@ -98,4 +98,4 @@ python synthesize_traces.py --generate <config_file.json> [--variants "1,1,3,3,1
 
 ### Compressibility Data
 
-The `compressibility/` directory contains compression ratio and decompression latency data for `lz4` and `zstd` compression algorithms at different block sizes. The data is obtained from FPGA rtl simulation with Xilinx Vivado HLS, and scaled to match the ASIC design. This data is used by the synthesis script to generate realistic timestamps for the memory accesses.
+The `compressibility/` directory contains compression ratio and decompression latency data for `lz4` and `zstd` compression algorithms at different block sizes. The data is obtained from FPGA rtl simulation with Xilinx Vivado HLS, and scaled to match the ASIC design. This data is used by the synthesis script to generate realistic timestamps for the memory accesses. 
