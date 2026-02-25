@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import bisect
 import pandas as pd
 import numpy as np
 import time
@@ -21,22 +22,22 @@ from sortedcontainers import SortedList
 from tqdm import tqdm
 import plotting
 
+_NUM_LOG_BINS = 10
+_MAX_RD = 100_000
+_BINS = np.logspace(np.log10(1), np.log10(_MAX_RD), num=_NUM_LOG_BINS)
+_BINS_LIST = _BINS.tolist()  # plain list for bisect in scalar rd_to_bin
+
 # Marcov Model Utility functions
 def rd_to_bin(rd):
-  num_log_bins = 10
-  max_rd=100000
-  bins = np.logspace(np.log10(1), np.log10(max_rd), num = num_log_bins)
   if rd < 0:
-    bin_index = -1
+    return -1
   elif rd == 0:
-    bin_index = 0
-  elif rd > max_rd:
-    bin_index = len(bins) + 1
+    return 0
+  elif rd > _MAX_RD:
+    return _NUM_LOG_BINS + 1
   else:
-    bin_index = np.digitize([rd], bins = bins, right=True)[0]
-    bin_index = min(bin_index, len(bins) - 1)
-    bin_index += 1
-  return bin_index
+    bin_index = bisect.bisect_left(_BINS_LIST, rd)
+    return min(bin_index, _NUM_LOG_BINS - 1) + 1
 
 def bin_to_rd(bin):
   if bin == 0:
@@ -45,22 +46,22 @@ def bin_to_rd(bin):
     return np.inf, np.inf
 
   bin_index = bin - 1
-  num_log_bins = 10
-  max_rd=100000
-  bins = np.logspace(np.log10(1), np.log10(max_rd), num = num_log_bins)
   if bin_index == 0:
     start = 1
   else:
-    start = int(bins[bin_index - 1] // 1 + 1)
-  end = int(bins[bin_index] // 1)
+    start = int(_BINS[bin_index - 1] // 1 + 1)
+  end = int(_BINS[bin_index] // 1)
 
   return start, end
 
 def bin_reuse_distance(reuse_distances):
-  binned_distance = []
-  for rd in reuse_distances:
-    binned_distance.append(rd_to_bin(rd))
-  return np.array(binned_distance)
+  arr = np.asarray(reuse_distances, dtype=float)
+  result = np.digitize(arr, bins=_BINS, right=True)
+  result = np.minimum(result, _NUM_LOG_BINS - 1) + 1
+  result[arr < 0] = -1
+  result[arr == 0] = 0
+  result[arr > _MAX_RD] = _NUM_LOG_BINS + 1  # also catches np.inf
+  return result
 
 def _int_defaultdict_factory():
   return defaultdict(int)
@@ -68,11 +69,16 @@ def _int_defaultdict_factory():
 def build_markov_model_log_bins(reuse_distances):
   binned_distances = bin_reuse_distance(reuse_distances)
 
+  from_bins = binned_distances[:-1].astype(int)
+  to_bins = binned_distances[1:].astype(int)
+
+  pairs, counts = np.unique(
+      np.stack([from_bins, to_bins], axis=1), axis=0, return_counts=True
+  )
+
   markov_model = defaultdict(_int_defaultdict_factory)
-  for i in range(len(binned_distances) - 1):
-    current_bin = binned_distances[i]
-    next_bin = binned_distances[i+1]
-    markov_model[current_bin][next_bin] += 1
+  for (from_b, to_b), count in zip(pairs, counts):
+    markov_model[int(from_b)][int(to_b)] = int(count)
 
   # Normalize transition counts to probabilities
   for current_bin in markov_model:
@@ -148,7 +154,10 @@ def compute_reuse_distances_only(block_ids):
 
   access_list = OrderedList(max_size = recent_window + 1)
 
-  for i, block in enumerate(block_ids):
+  _BAR_FMT = "{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
+  for i, block in enumerate(tqdm(block_ids, desc="    accesses", unit="acc",
+                                  leave=False, miniters=10_000, mininterval=1.0,
+                                  bar_format=_BAR_FMT)):
     if block in access_list.position_map:
       index, _ = access_list.move_to_front(block)
       reuse_distances[i] = index
@@ -170,14 +179,10 @@ def compute_reuse_distances(block_ids, reduced_block_ids):
 
   access_list = OrderedList(max_size = recent_window + 1)
 
-  df = pd.DataFrame()
-  df.loc[:,'block_address'] = block_ids
-  df.loc[:,'lowest_bit'] = reduced_block_ids & 1
-
-  grouped_df = df.groupby('block_address')['lowest_bit'].nunique()
-  low_utility_blocks = grouped_df[grouped_df == 1].index.tolist()
-
-  for i, block in enumerate(block_ids):
+  _BAR_FMT = "{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}, {rate_fmt}]"
+  for i, block in enumerate(tqdm(block_ids, desc="    accesses", unit="acc",
+                                  leave=False, miniters=10_000, mininterval=1.0,
+                                  bar_format=_BAR_FMT)):
     reduced_block = reduced_block_ids[i]
     if block in access_list.position_map:
       index, preserve = access_list.move_to_front(block, reduced_block)
@@ -192,7 +197,7 @@ def compute_reuse_distances(block_ids, reduced_block_ids):
       access_list.insert(block, reduced_block)
       reuse_distances[i] = np.inf
 
-  return reuse_distances, preserved_count/total_count, len(low_utility_blocks)/len(grouped_df)
+  return reuse_distances, preserved_count/total_count
 
 def generate_cdf(reuse_distances):
   inf_count = np.isinf(reuse_distances).sum()
@@ -245,19 +250,22 @@ def extract_full_parameters(df, trace_name, output_dir):
 
   # Access Count Distribution
   pbar.set_postfix_str(steps[0])
+  t_step = time.time()
   counts = df['PageAddress'].value_counts()
   num_blocks = len(counts)
   count_freq = counts.value_counts()
   counts = sorted(set(counts.values))
   access_dist = (counts, np.array(count_freq))
-  logging.info("Completed generating access count distribution.")
+  logging.info(f"Access count distribution done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   # Block address mapping
   pbar.set_postfix_str(steps[1])
+  t_step = time.time()
+  int_addresses = df['IntAddress'].astype(int).values
   for shift in block_shifts:
-    block_ids_dict[shift] = map_address_to_blocks(df['IntAddress'].astype(int).values, shift)
-  logging.info("Completed mapping address to blocks.")
+    block_ids_dict[shift] = map_address_to_blocks(int_addresses, shift)
+  logging.info(f"Block address mapping done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   # Reuse distances & Bit Flip Ratio
@@ -268,25 +276,28 @@ def extract_full_parameters(df, trace_name, output_dir):
                                   leave=False,
                                   bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]")):
     label = f"{block_size_kb.get(shift, 2**(shift-10))}KB"
-    logging.info(f"Calculating reuse distance for shift {shift} ({label})")
+    t_shift = time.time()
     if j < len(block_shifts) - 1:
       next_shift = block_shifts[j+1]
     else:
       next_shift = 6
-    reuse_distance, ratio, _ = compute_reuse_distances(block_ids_dict[shift], block_ids_dict[next_shift])
+    reuse_distance, ratio = compute_reuse_distances(block_ids_dict[shift], block_ids_dict[next_shift])
     reuse_distance_dict[shift] = reuse_distance
     spatial_param.append(ratio)
-  logging.info("Completed generating bit flip ratio.")
+    logging.info(f"Reuse distance shift={shift} ({label}) done. ({time.time() - t_shift:.1f}s)")
+  logging.info(f"Bit flip ratio done. (total: {time.time() - start_time:.1f}s elapsed)")
   pbar.update(1)
 
   # Markov Matrix
   pbar.set_postfix_str(steps[3])
+  t_step = time.time()
   markov_model = build_markov_model_log_bins(reuse_distance_dict[12])
-  logging.info("Completed generating Markov matrix.")
+  logging.info(f"Markov matrix done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   # CDFs
   pbar.set_postfix_str(steps[4])
+  t_step = time.time()
   inf_counts = []
   cdf_plot = {}
   for shift in tqdm(block_shifts, desc="  CDFs", unit="block size", leave=False,
@@ -294,10 +305,12 @@ def extract_full_parameters(df, trace_name, output_dir):
     x, cdf_values, inf_count = generate_cdf_inf(reuse_distance_dict[shift])
     cdf_plot[shift] = (x, cdf_values)
     inf_counts.append(inf_count)
+  logging.info(f"CDFs done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   # Short Interval Ratio
   pbar.set_postfix_str(steps[5])
+  t_step = time.time()
   short_interval_thr = 10e-6 # 10us -> 100ns when scaled
   block_ids_dict = {}
 
@@ -323,7 +336,7 @@ def extract_full_parameters(df, trace_name, output_dir):
     result.append([r,m])
     ratios.append(r)
   plotting.plot_SIR(ratios, trace_name, "full", output_dir)
-  logging.info("Completed generating short interval ratio.")
+  logging.info(f"Short interval ratio done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   pbar.close()

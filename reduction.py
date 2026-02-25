@@ -71,7 +71,7 @@ def reconstruct_counts_from_intervals(interval_edges, interval_sums, interval_we
 
     return {x: int(solver.Value(n[x])) for x in all_x if solver.Value(n[x]) > 0}
 
-def _fit_log_distribution(x_arr, y_arr, end, num_intervals=5):
+def _fit_log_distribution(x_arr, y_arr, end, num_intervals=5, bypass_solver=False):
     """
     Fits a log distribution to the data.
 
@@ -80,6 +80,9 @@ def _fit_log_distribution(x_arr, y_arr, end, num_intervals=5):
         y_arr (np.array): The y-values of the distribution.
         end (int): The end value for the bins.
         num_intervals (int): The number of intervals to create.
+        bypass_solver (bool): If True, skip the CP-SAT solver and return the
+            original data as-is. Interval sums/weighted sums are still computed
+            for access_params (used in JSON export and synthesis).
 
     Returns:
         tuple: A tuple containing the edges, interval sums, interval weighted sums,
@@ -97,11 +100,14 @@ def _fit_log_distribution(x_arr, y_arr, end, num_intervals=5):
         interval_sums[i] = y_arr[mask].sum()
         interval_weighted_sums[i] = (x_arr[mask] * y_arr[mask]).sum()
 
+    if bypass_solver:
+        return edges, interval_sums, interval_weighted_sums, x_arr, y_arr
+
     dist = reconstruct_counts_from_intervals(edges, interval_sums.tolist(), interval_weighted_sums.tolist())
 
     x_dist = np.array(sorted(dist))
     y_dist = np.array([dist[x] for x in x_dist])
-    
+
     return edges, interval_sums, interval_weighted_sums, x_dist, y_dist
 
 # Markov matrix reduction
@@ -315,7 +321,7 @@ def _build_bit_flip_matrix_initial_guess(peak_coords, original_matrix):
         guess_list += [A1_init, A2_init]
     return np.array(guess_list, dtype=float)
 
-def _reduce_access_count_distribution(full_params, trace_name, output_dir):
+def _reduce_access_count_distribution(full_params, trace_name, output_dir, bypass_solver=True):
     """Reduces the access count distribution."""
     logging.info("Reducing access count distribution...")
     t0 = time.time()
@@ -324,13 +330,19 @@ def _reduce_access_count_distribution(full_params, trace_name, output_dir):
     x_data = np.asarray(count, dtype=int)
     y_data = np.asarray(count_freq)
 
-    edges, s, w, x_dist, y_dist = _fit_log_distribution(x_data, y_data, end=max_x, num_intervals=5)
-
-    y_reduced = np.zeros(max_x, dtype=y_dist.dtype)
-    y_reduced[x_dist] = y_dist
+    edges, s, w, x_dist, y_dist = _fit_log_distribution(
+        x_data, y_data, end=max_x, num_intervals=5, bypass_solver=bypass_solver
+    )
 
     y_full = np.zeros(max_x, dtype=y_data.dtype)
     y_full[x_data] = y_data
+
+    if bypass_solver:
+        y_reduced = None
+        logging.info("Skipping CP-SAT solver (bypass_solver=True).")
+    else:
+        y_reduced = np.zeros(max_x, dtype=y_dist.dtype)
+        y_reduced[x_dist] = y_dist
 
     plotting.plot_AD(max_x, y_reduced, y_full, trace_name, output_dir)
     logging.info(f"Completed reducing access count distribution. ({time.time() - t0:.1f}s)")
@@ -431,9 +443,18 @@ def _reduce_bit_flip_matrix(full_params, trace_name, output_dir):
     original_matrix_bfr = np.vstack(spatial_param[:-1])
     original_matrix_bfr = 1 - original_matrix_bfr
 
-    # if lt value [0,-1] s inf or NaN, fix it
-    if math.isinf(original_matrix_bfr[0, -1]) or math.isnan(original_matrix_bfr[0, -1]):
-        original_matrix_bfr[0, -1] = original_matrix_bfr[0, -2]
+    # Replace any NaN/Inf value with the closest finite entry.
+    invalid_mask = ~np.isfinite(original_matrix_bfr)
+    if np.any(invalid_mask):
+        finite_coords = np.argwhere(~invalid_mask)
+        if finite_coords.size == 0:
+            raise ValueError("Bit flip matrix has no finite values to substitute NaN/Inf entries.")
+        invalid_coords = np.argwhere(invalid_mask)
+        for invalid_row, invalid_col in invalid_coords:
+            distances = (finite_coords[:, 0] - invalid_row) ** 2 + (finite_coords[:, 1] - invalid_col) ** 2
+            nearest_idx = np.argmin(distances)
+            nearest_row, nearest_col = finite_coords[nearest_idx]
+            original_matrix_bfr[invalid_row, invalid_col] = original_matrix_bfr[nearest_row, nearest_col]
     N_bfr = 6
     M_bfr = 11
     peak_coords_bfr = peak_local_max(

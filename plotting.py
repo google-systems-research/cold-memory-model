@@ -40,8 +40,9 @@ def _plot_ad_subplot(ax, max_x, y_reduced, y_padding, xlim, ylim, xticks, xlabel
         x_values = x_values / 1000
     ax.plot(x_values, y_padding[1:]/1000, label="Full parameter", marker='o', markersize=12,
             linestyle='-', linewidth=4, color='#FF1900')
-    ax.plot(x_values, y_reduced[1:]/1000, label="Reduced parameter", marker='x', markersize=12,
-            linestyle=':', linewidth=4, color='#0066CC')
+    if y_reduced is not None:
+        ax.plot(x_values, y_reduced[1:]/1000, label="Reduced parameter", marker='x', markersize=12,
+                linestyle=':', linewidth=4, color='#0066CC')
     ax.set_xlim(xlim)
     ax.set_ylim(ylim)
     ax.legend()
