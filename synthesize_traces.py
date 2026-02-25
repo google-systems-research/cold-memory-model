@@ -413,7 +413,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
     trace_df = full_params['original_df']
     trace = trace_df["IntAddress"].to_numpy()
     pages = trace_df["PageAddress"].to_numpy()
-    times = trace_df["timestamp"].to_numpy()
+    times = trace_df["timestamp_elapsed_us"].to_numpy()
     times = 300_000 * times / times[-1]
     
     unique_pages = np.unique(pages)

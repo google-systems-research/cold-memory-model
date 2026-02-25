@@ -29,6 +29,12 @@ The typical workflow consists of two main steps:
 
 ## How to Use
 
+### Setup
+Download required python packages.
+```bash
+pip install -r requirements.txt
+```
+
 ### 1. Analyzing Traces
 
 The `analyze_traces.py` script extracts locality parameters from memory access traces.
@@ -40,7 +46,7 @@ python analyze_traces.py [--files TRACE_FILE_1.csv TRACE_FILE_2.csv]
 ```
 
 -   Place your input trace files (in CSV format) in the `input_traces/` directory.
--   The input trace must include timestamp (in us) and physical_address (in hex) column.
+-   The input trace must include timestamp_elaped_us (in us) and physical_address (in hex) column.
 -   Run the script. If no files are specified with the `--files` flag, it will process all `.csv` files in the `input_traces/` directory.
 -   The script will output extracted parameters (`full_parameters.pkl`, `reduced_parameters.pkl`, and CSV files) to the `locality_params/<trace_name>/` directory. It also generates various plots for analysis in the `figures` subdirectory.
 -   The RMS error of the model from reducing the number of parameters are reported in `locality_params/reduced_param_errors.csv`.

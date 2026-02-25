@@ -18,6 +18,7 @@ import time
 import logging
 from collections import defaultdict
 from sortedcontainers import SortedList
+from tqdm import tqdm
 import plotting
 
 # Marcov Model Utility functions
@@ -232,22 +233,42 @@ def extract_full_parameters(df, trace_name, output_dir):
   block_ids_dict = {}
   reuse_distance_dict = {}
 
+  steps = [
+    "Access count distribution",
+    "Block address mapping",
+    "Reuse distances & bit flip ratio",
+    "Markov matrix",
+    "CDFs",
+    "Short interval ratio",
+  ]
+  pbar = tqdm(total=len(steps), desc=f"[{trace_name}] Extracting parameters", unit="step")
+
   # Access Count Distribution
+  pbar.set_postfix_str(steps[0])
   counts = df['PageAddress'].value_counts()
   num_blocks = len(counts)
   count_freq = counts.value_counts()
   counts = sorted(set(counts.values))
   access_dist = (counts, np.array(count_freq))
   logging.info("Completed generating access count distribution.")
+  pbar.update(1)
 
-  # Bit Flip Ratio
+  # Block address mapping
+  pbar.set_postfix_str(steps[1])
   for shift in block_shifts:
     block_ids_dict[shift] = map_address_to_blocks(df['IntAddress'].astype(int).values, shift)
   logging.info("Completed mapping address to blocks.")
+  pbar.update(1)
 
+  # Reuse distances & Bit Flip Ratio
+  pbar.set_postfix_str(steps[2])
+  block_size_kb = {12: 4, 11: 8, 10: 16, 9: 32, 8: 64, 7: 128, 6: 256}
   spatial_param = []
-  for j, shift in enumerate(block_shifts):
-    logging.info(f'Calculating reuse distance for shift: {shift}')
+  for j, shift in enumerate(tqdm(block_shifts, desc="  Reuse distances", unit="block size",
+                                  leave=False,
+                                  bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]")):
+    label = f"{block_size_kb.get(shift, 2**(shift-10))}KB"
+    logging.info(f"Calculating reuse distance for shift {shift} ({label})")
     if j < len(block_shifts) - 1:
       next_shift = block_shifts[j+1]
     else:
@@ -256,37 +277,44 @@ def extract_full_parameters(df, trace_name, output_dir):
     reuse_distance_dict[shift] = reuse_distance
     spatial_param.append(ratio)
   logging.info("Completed generating bit flip ratio.")
+  pbar.update(1)
 
-  # Markov Matrix    
-  logging.info("Completed generating reuse distances.")
+  # Markov Matrix
+  pbar.set_postfix_str(steps[3])
   markov_model = build_markov_model_log_bins(reuse_distance_dict[12])
-  logging.info("Completed generating Markov Matrix.")
+  logging.info("Completed generating Markov matrix.")
+  pbar.update(1)
 
+  # CDFs
+  pbar.set_postfix_str(steps[4])
   inf_counts = []
   cdf_plot = {}
-  for shift in block_shifts:
+  for shift in tqdm(block_shifts, desc="  CDFs", unit="block size", leave=False,
+                    bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]"):
     x, cdf_values, inf_count = generate_cdf_inf(reuse_distance_dict[shift])
     cdf_plot[shift] = (x, cdf_values)
     inf_counts.append(inf_count)
+  pbar.update(1)
 
   # Short Interval Ratio
-  short_interval_thr = 10e-6 # 10us -> 100ns when scaled 
+  pbar.set_postfix_str(steps[5])
+  short_interval_thr = 10e-6 # 10us -> 100ns when scaled
   block_ids_dict = {}
 
   reuse_distance = reuse_distance_dict[12]
   df['rd'] = bin_reuse_distance(reuse_distance)
 
-  df['iat'] = df['timestamp'].diff()
+  df['iat'] = df['timestamp_elapsed_us'].diff()
   df = df.dropna()
 
   df["short"] = df["iat"] <= short_interval_thr
   grp = df.groupby("rd")
-  
+
   short_ratio = grp["short"].mean()
   short_mean = grp.apply(
     lambda g: g.loc[g["short"], "iat"].mean()
   )
-  
+
   result = []
   ratios = []
   for s in range(12):
@@ -296,9 +324,11 @@ def extract_full_parameters(df, trace_name, output_dir):
     ratios.append(r)
   plotting.plot_SIR(ratios, trace_name, "full", output_dir)
   logging.info("Completed generating short interval ratio.")
+  pbar.update(1)
 
+  pbar.close()
   elapsed_time = time.time() - start_time
-  logging.info(f'Elapsed time for trace Analysis: {elapsed_time:.2f} seconds.')
+  logging.info(f'Elapsed time for trace analysis: {elapsed_time:.2f} seconds.')
 
   full_params = {
     'original_df': df,

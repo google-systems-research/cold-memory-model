@@ -30,7 +30,7 @@ def sample_trace(file_path, output_dir):
 
     for frac in fractions:
         sampled_df = df.sample(frac=frac, random_state=42)
-        sampled_df = sampled_df.sort_values(by='timestamp')
+        sampled_df = sampled_df.sort_values(by='timestamp_elapsed_us')
         output_filename = f"{base_name}_sampled_{int(frac*100)}per.csv"
         output_path = os.path.join(output_dir, output_filename)
         sampled_df.to_csv(output_path, index=False)

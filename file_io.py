@@ -174,9 +174,9 @@ def preprocess_traces(dfs: List[pd.DataFrame]) -> List[pd.DataFrame]:
   """Preprocesses a list of trace DataFrames."""
   clean_dfs = []
   for df in dfs:
-    df.iloc[:,1] = pd.to_numeric(df.iloc[:,1], errors='coerce')
-    df.iloc[:,1] = df.iloc[:,1] - df.iloc[0,1]
-    df.loc[:,'IntAddress'] = df.iloc[:, 3].apply(lambda x: int(x, 16) if isinstance(x, str) else x)
+    df['timestamp_elapsed_us'] = pd.to_numeric(df['timestamp_elapsed_us'], errors='coerce')
+    df['timestamp_elapsed_us'] = df['timestamp_elapsed_us'] - df['timestamp_elapsed_us'].iloc[0]
+    df.loc[:,'IntAddress'] = df['physical_address'].apply(lambda x: int(x, 16) if isinstance(x, str) else x)
     df.loc[:,'PageAddress'] = df.loc[:,'IntAddress'].apply(lambda x: x >> 12)
     clean_df = df.dropna()
     clean_dfs.append(clean_df)

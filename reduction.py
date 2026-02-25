@@ -15,9 +15,11 @@
 import numpy as np
 import logging
 import math
+import time
 from scipy.optimize import minimize, Bounds, curve_fit
 from ortools.sat.python import cp_model
 from skimage.feature import peak_local_max
+from tqdm import tqdm
 import plotting
 import file_io
 
@@ -316,26 +318,28 @@ def _build_bit_flip_matrix_initial_guess(peak_coords, original_matrix):
 def _reduce_access_count_distribution(full_params, trace_name, output_dir):
     """Reduces the access count distribution."""
     logging.info("Reducing access count distribution...")
+    t0 = time.time()
     (count, count_freq) = full_params['access_count_dist']
     max_x = count[-1] + 1
     x_data = np.asarray(count, dtype=int)
     y_data = np.asarray(count_freq)
-    
+
     edges, s, w, x_dist, y_dist = _fit_log_distribution(x_data, y_data, end=max_x, num_intervals=5)
 
     y_reduced = np.zeros(max_x, dtype=y_dist.dtype)
     y_reduced[x_dist] = y_dist
-    
+
     y_full = np.zeros(max_x, dtype=y_data.dtype)
     y_full[x_data] = y_data
 
     plotting.plot_AD(max_x, y_reduced, y_full, trace_name, output_dir)
-    logging.info("Completed reducing access count distribution.")
+    logging.info(f"Completed reducing access count distribution. ({time.time() - t0:.1f}s)")
     return (x_dist, y_dist), (s, w, edges)
 
 def _reduce_markov_matrix(full_params, trace_name, output_dir):
     """Reduces the Markov matrix."""
-    logging.info("Reducing Markov Matrix...")
+    logging.info("Reducing Markov matrix...")
+    t0 = time.time()
     N = 12
     markov_model = full_params['markov_matrix']
     original_matrix_mm = np.zeros((N, N), dtype=float)
@@ -409,7 +413,7 @@ def _reduce_markov_matrix(full_params, trace_name, output_dir):
         original_matrix_mm = np.insert(original_matrix_mm, 10, 0, axis=1)
 
     plotting.plot_MM(fitted_M_mm, original_matrix_mm, trace_name, output_dir)
-    logging.info("Completed reducing Markov Matrix.")
+    logging.info(f"Completed reducing Markov matrix. ({time.time() - t0:.1f}s)")
     diff = fitted_M_mm - original_matrix_mm
     sq_error = np.sum(diff ** 2)
     rms_error = np.sqrt(sq_error / (N_mm * N_mm))
@@ -421,7 +425,8 @@ def _reduce_markov_matrix(full_params, trace_name, output_dir):
 
 def _reduce_bit_flip_matrix(full_params, trace_name, output_dir):
     """Reduces the bit flip matrix."""
-    logging.info("Reducing Bit Flip Matrix...")
+    logging.info("Reducing bit flip matrix...")
+    t0 = time.time()
     spatial_param = full_params['bit_flip_matrix']
     original_matrix_bfr = np.vstack(spatial_param[:-1])
     original_matrix_bfr = 1 - original_matrix_bfr
@@ -465,12 +470,13 @@ def _reduce_bit_flip_matrix(full_params, trace_name, output_dir):
     sq_error = math.sqrt(np.sum(diff ** 2) / 66)
     spatial_list = [row for row in 1 - fitted_M_bfr]
     plotting.plot_BFR(spatial_list, spatial_param, trace_name, output_dir)
-    logging.info("Completed reducing Bit Flip Matrix.")
+    logging.info(f"Completed reducing bit flip matrix. ({time.time() - t0:.1f}s)")
     return spatial_list, (popt, peak_coords_bfr), sq_error
 
 def _reduce_short_interval_ratio(full_params, trace_name, output_dir):
     """Reduces the short interval ratio."""
     logging.info("Reducing short interval ratio...")
+    t0 = time.time()
     short_interval_ratio = full_params['short_ratio']
     x_data = [0, 5, 11]
     y_data = [short_interval_ratio[0], short_interval_ratio[5], short_interval_ratio[11]]
@@ -478,7 +484,7 @@ def _reduce_short_interval_ratio(full_params, trace_name, output_dir):
     poly = np.poly1d(p)
     reduced_short_interval_ratio = [float(poly(x)) for x in range(0, 12)]
     plotting.plot_SIR(reduced_short_interval_ratio, trace_name, "reduced", output_dir)
-    logging.info("Completed reducing short interval ratio.")
+    logging.info(f"Completed reducing short interval ratio. ({time.time() - t0:.1f}s)")
     return reduced_short_interval_ratio, p
 
 def reduce_parameters(full_params, trace_name, output_dir):
@@ -494,26 +500,46 @@ def reduce_parameters(full_params, trace_name, output_dir):
       dict: The reduced parameters.
   """
   logging.info("Reducing parameters...")
+  t_total = time.time()
 
   num_blocks = full_params['num_pages']
 
+  reduction_steps = [
+      "Access count distribution",
+      "Markov matrix",
+      "Bit flip matrix",
+      "Short interval ratio",
+  ]
+  pbar = tqdm(total=len(reduction_steps), desc=f"[{trace_name}] Reducing parameters", unit="step")
+
   # Reduce access count distribution
+  pbar.set_postfix_str(reduction_steps[0])
   (x_dist, y_dist), (s, w, edges) = _reduce_access_count_distribution(
       full_params, trace_name, output_dir
   )
+  pbar.update(1)
 
   # Reduce Markov Matrix
+  pbar.set_postfix_str(reduction_steps[1])
   fitted_M_mm, markov_params, mm_rms_error, mm_col_error = _reduce_markov_matrix(full_params, trace_name, output_dir)
+  pbar.update(1)
 
-  #reducing bit flip matrix
+  # Reduce bit flip matrix
+  pbar.set_postfix_str(reduction_steps[2])
   spatial_list, bit_flip_params, bfr_rms_error = _reduce_bit_flip_matrix(
       full_params, trace_name, output_dir
   )
+  pbar.update(1)
 
-  # reduce short interval ratio
+  # Reduce short interval ratio
+  pbar.set_postfix_str(reduction_steps[3])
   reduced_short_interval_ratio, short_ratio_params = _reduce_short_interval_ratio(
       full_params, trace_name, output_dir
   )
+  pbar.update(1)
+  pbar.close()
+
+  logging.info(f"Parameter reduction complete. Total time: {time.time() - t_total:.1f}s")
 
   errors = [
         ('Markov_matrix_RMS', mm_rms_error),

@@ -4,3 +4,8 @@ compressibility/64*
 compressibility/128*
 compressibility/*pickle
 input_traces/*
+CLAUDE.md
+.venv/
+venv/
+__pycache__/
+analyzer.log
