@@ -22,7 +22,7 @@ def sample_trace(file_path, output_dir):
     Samples a trace file at different percentages and saves them to the output directory.
     """
     df = pd.read_csv(file_path)
-    fractions = [0.01, 0.10, 0.25, 0.50]
+    fractions = [0.01]
     base_name = os.path.basename(file_path).split('.')[0]
 
     if not os.path.exists(output_dir):

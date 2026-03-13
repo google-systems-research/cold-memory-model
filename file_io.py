@@ -18,6 +18,7 @@ import csv
 from pathlib import Path
 import re
 import pandas as pd
+import numpy as np
 from typing import Dict, Any, List
 import os
 import pickle
@@ -74,8 +75,18 @@ def save_reduced_params_to_json(reduced_params: Dict[str, Any], output_dir: Path
   data["working_set_sizes"][trace_name] = ws_size
   # 2. Access Count Distribution
   s_list, w_list, _ = reduced_params['access_params']
-  pages_in_percent = 100 * s_list / ws_size
-  avg_accesses = w_list / s_list
+  s_list = np.asarray(s_list, dtype=float)
+  w_list = np.asarray(w_list, dtype=float)
+  if ws_size > 0:
+    pages_in_percent = 100 * s_list / ws_size
+  else:
+    pages_in_percent = np.zeros_like(s_list, dtype=float)
+  avg_accesses = np.divide(
+      w_list,
+      s_list,
+      out=np.zeros_like(w_list, dtype=float),
+      where=s_list != 0
+  )
   data["access_count_distribution"][trace_name] = {
     "avg_accesses": avg_accesses.tolist(),
     "pages_in_percent": pages_in_percent.tolist()
@@ -161,7 +172,12 @@ def load_trace_dataframes(file_names: List[str], base_path: str = './input_trace
   for file_name in file_names:
     try:
       full_path = os.path.join(base_path, file_name)
-      df = pd.read_csv(full_path)
+      # Keep only columns needed by analysis to avoid loading unrelated data.
+      df = pd.read_csv(
+          full_path,
+          usecols=['physical_address', 'timestamp_elapsed_us'],
+          dtype={'timestamp_elapsed_us': 'float64'}
+      )
       dataframes.append(df)
       logging.info(f"Successfully loaded: {full_path}")
     except FileNotFoundError:
@@ -174,11 +190,26 @@ def preprocess_traces(dfs: List[pd.DataFrame]) -> List[pd.DataFrame]:
   """Preprocesses a list of trace DataFrames."""
   clean_dfs = []
   for df in dfs:
-    df['timestamp_elapsed_us'] = pd.to_numeric(df['timestamp_elapsed_us'], errors='coerce')
-    df['timestamp_elapsed_us'] = df['timestamp_elapsed_us'] - df['timestamp_elapsed_us'].iloc[0]
-    df.loc[:,'IntAddress'] = df['physical_address'].apply(lambda x: int(x, 16) if isinstance(x, str) else x)
-    df.loc[:,'PageAddress'] = df.loc[:,'IntAddress'].apply(lambda x: x >> 12)
-    clean_df = df.dropna()
+    ts = pd.to_numeric(df['timestamp_elapsed_us'], errors='coerce')
+    addr = df['physical_address']
+    valid_mask = ts.notna() & addr.notna()
+    if not valid_mask.any():
+      continue
+
+    ts = ts[valid_mask].to_numpy(dtype=np.float64, copy=False)
+    ts = ts - ts[0]
+
+    addr = addr[valid_mask].astype(str)
+    int_addresses = np.fromiter(
+        (int(v, 16) if v.lower().startswith('0x') else int(v) for v in addr),
+        dtype=np.uint64,
+        count=len(addr)
+    )
+    clean_df = pd.DataFrame({
+        'timestamp_elapsed_us': ts,
+        'IntAddress': int_addresses,
+        'PageAddress': int_addresses >> 12,
+    })
     clean_dfs.append(clean_df)
   return clean_dfs
 

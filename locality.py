@@ -197,7 +197,13 @@ def compute_reuse_distances(block_ids, reduced_block_ids):
       access_list.insert(block, reduced_block)
       reuse_distances[i] = np.inf
 
-  return reuse_distances, preserved_count/total_count
+  ratio = np.divide(
+      preserved_count,
+      total_count,
+      out=np.full_like(preserved_count, np.nan, dtype=float),
+      where=total_count != 0
+  )
+  return reuse_distances, ratio
 
 def generate_cdf(reuse_distances):
   inf_count = np.isinf(reuse_distances).sum()
@@ -231,12 +237,11 @@ def generate_cdf_inf(reuse_distances):
 
   return sorted_distances, cdf, inf_count
 
-def extract_full_parameters(df, trace_name, output_dir):
+def extract_full_parameters(df, trace_name, output_dir, skip_access_count=False):
   logging.info("Extracting full parameters... ")
   start_time = time.time()
   block_shifts = list(range(12, 5, -1))
-  block_ids_dict = {}
-  reuse_distance_dict = {}
+  reuse_distance_12 = None
 
   steps = [
     "Access count distribution",
@@ -251,20 +256,26 @@ def extract_full_parameters(df, trace_name, output_dir):
   # Access Count Distribution
   pbar.set_postfix_str(steps[0])
   t_step = time.time()
-  counts = df['PageAddress'].value_counts()
-  num_blocks = len(counts)
-  count_freq = counts.value_counts()
-  counts = sorted(set(counts.values))
-  access_dist = (counts, np.array(count_freq))
+  page_addresses = df['PageAddress'].to_numpy(dtype=np.uint64, copy=False)
+  if skip_access_count:
+    # Keep only the number of unique pages for downstream use.
+    num_blocks = int(np.unique(page_addresses).size)
+    access_dist = None
+    logging.info("Skipping access count distribution for large trace.")
+  else:
+    counts = pd.Series(page_addresses).value_counts(sort=False)
+    num_blocks = len(counts)
+    count_freq = counts.value_counts(sort=False)
+    count_values = np.sort(count_freq.index.to_numpy(dtype=np.int64))
+    freq_values = count_freq.reindex(count_values).to_numpy(dtype=np.int64)
+    access_dist = (count_values, freq_values)
   logging.info(f"Access count distribution done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   # Block address mapping
   pbar.set_postfix_str(steps[1])
   t_step = time.time()
-  int_addresses = df['IntAddress'].astype(int).values
-  for shift in block_shifts:
-    block_ids_dict[shift] = map_address_to_blocks(int_addresses, shift)
+  int_addresses = df['IntAddress'].to_numpy(dtype=np.uint64, copy=False)
   logging.info(f"Block address mapping done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
@@ -272,6 +283,8 @@ def extract_full_parameters(df, trace_name, output_dir):
   pbar.set_postfix_str(steps[2])
   block_size_kb = {12: 4, 11: 8, 10: 16, 9: 32, 8: 64, 7: 128, 6: 256}
   spatial_param = []
+  cdf_plot = {}
+  inf_counts = []
   for j, shift in enumerate(tqdm(block_shifts, desc="  Reuse distances", unit="block size",
                                   leave=False,
                                   bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]")):
@@ -281,9 +294,23 @@ def extract_full_parameters(df, trace_name, output_dir):
       next_shift = block_shifts[j+1]
     else:
       next_shift = 6
-    reuse_distance, ratio = compute_reuse_distances(block_ids_dict[shift], block_ids_dict[next_shift])
-    reuse_distance_dict[shift] = reuse_distance
+    block_ids = map_address_to_blocks(int_addresses, shift)
+    reduced_block_ids = map_address_to_blocks(int_addresses, next_shift)
+    reuse_distance, ratio = compute_reuse_distances(block_ids, reduced_block_ids)
     spatial_param.append(ratio)
+
+    if shift == 12:
+      reuse_distance_12 = reuse_distance
+
+    x, cdf_values, inf_count = generate_cdf_inf(reuse_distance)
+    cdf_plot[shift] = (x, cdf_values)
+    inf_counts.append(inf_count)
+
+    del block_ids
+    del reduced_block_ids
+    if shift != 12:
+      del reuse_distance
+
     logging.info(f"Reuse distance shift={shift} ({label}) done. ({time.time() - t_shift:.1f}s)")
   logging.info(f"Bit flip ratio done. (total: {time.time() - start_time:.1f}s elapsed)")
   pbar.update(1)
@@ -291,20 +318,15 @@ def extract_full_parameters(df, trace_name, output_dir):
   # Markov Matrix
   pbar.set_postfix_str(steps[3])
   t_step = time.time()
-  markov_model = build_markov_model_log_bins(reuse_distance_dict[12])
+  if reuse_distance_12 is None:
+    raise ValueError("Failed to compute reuse distances for 4KB blocks (shift=12).")
+  markov_model = build_markov_model_log_bins(reuse_distance_12)
   logging.info(f"Markov matrix done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   # CDFs
   pbar.set_postfix_str(steps[4])
   t_step = time.time()
-  inf_counts = []
-  cdf_plot = {}
-  for shift in tqdm(block_shifts, desc="  CDFs", unit="block size", leave=False,
-                    bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{elapsed}<{remaining}]"):
-    x, cdf_values, inf_count = generate_cdf_inf(reuse_distance_dict[shift])
-    cdf_plot[shift] = (x, cdf_values)
-    inf_counts.append(inf_count)
   logging.info(f"CDFs done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
@@ -312,44 +334,40 @@ def extract_full_parameters(df, trace_name, output_dir):
   pbar.set_postfix_str(steps[5])
   t_step = time.time()
   short_interval_thr = 10e-6 # 10us -> 100ns when scaled
-  block_ids_dict = {}
+  rd_bins = bin_reuse_distance(reuse_distance_12)
+  timestamps = df['timestamp_elapsed_us'].to_numpy(dtype=np.float64, copy=False)
+  iat = np.diff(timestamps)
+  rd_for_iat = rd_bins[1:]
+  short_mask = iat <= short_interval_thr
+  valid_bins = (rd_for_iat >= 0) & (rd_for_iat <= 11)
 
-  reuse_distance = reuse_distance_dict[12]
-  df['rd'] = bin_reuse_distance(reuse_distance)
-
-  df['iat'] = df['timestamp_elapsed_us'].diff()
-  df = df.dropna()
-
-  df["short"] = df["iat"] <= short_interval_thr
-  grp = df.groupby("rd")
-
-  short_ratio = grp["short"].mean()
-  short_mean = grp.apply(
-    lambda g: g.loc[g["short"], "iat"].mean()
+  total_per_bin = np.bincount(rd_for_iat[valid_bins], minlength=12)
+  short_per_bin = np.bincount(
+      rd_for_iat[valid_bins],
+      weights=short_mask[valid_bins].astype(np.float64),
+      minlength=12
   )
-
-  result = []
-  ratios = []
-  for s in range(12):
-    r = short_ratio.get(s, np.nan)
-    m = short_mean.get(s, np.nan)
-    result.append([r,m])
-    ratios.append(r)
+  ratios = np.full(12, np.nan, dtype=np.float64)
+  non_zero = total_per_bin > 0
+  ratios[non_zero] = short_per_bin[non_zero] / total_per_bin[non_zero]
+  ratios = ratios.tolist()
   plotting.plot_SIR(ratios, trace_name, "full", output_dir)
   logging.info(f"Short interval ratio done. ({time.time() - t_step:.1f}s)")
   pbar.update(1)
 
   pbar.close()
+  del reuse_distance_12
   elapsed_time = time.time() - start_time
   logging.info(f'Elapsed time for trace analysis: {elapsed_time:.2f} seconds.')
 
   full_params = {
-    'original_df': df,
-    'reuse_distance_dict': reuse_distance_dict,
+    # 'original_df': df,
+    # 'reuse_distance_dict': reuse_distance_dict,
     'inf_counts': inf_counts,
     'num_pages': num_blocks,
     'cdf_plot': cdf_plot, 
     'access_count_dist': access_dist,
+    'access_count_skipped': bool(skip_access_count),
     'markov_matrix': markov_model,
     'bit_flip_matrix': spatial_param,
     'short_ratio': ratios

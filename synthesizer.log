@@ -1,0 +1,202 @@
+2026-03-12 17:35:35,398 - INFO - Processing trace: tr0
+2026-03-12 17:35:35,398 - INFO - Restoring parameters for trace: tr0
+2026-03-12 17:35:35,398 - WARNING - Could not find parameter files for trace: tr0
+2026-03-12 17:37:43,093 - INFO - Processing trace: tr0
+2026-03-12 17:37:43,093 - INFO - Restoring parameters for trace: tr0
+2026-03-12 17:37:43,093 - WARNING - Could not find parameter files for trace: tr0
+2026-03-12 17:37:43,094 - INFO - Loaded reduced parameters for tr0 from locality_params/tr0/reduced_params_redis.json.
+2026-03-12 17:37:43,094 - INFO - Reconstructing trace: tr0
+2026-03-12 17:37:43,289 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:37:43,306 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:37:43,306 - INFO - Synthesizing trace for tr0 from reduced parameters.
+2026-03-12 17:40:42,536 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:40:42,536 - INFO - Step 1: Completed.
+2026-03-12 17:40:42,536 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:41:10,856 - INFO - Step 2: Completed.
+2026-03-12 17:41:10,857 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:41:10,857 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:41:10,857 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:41:10,857 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:41:10,857 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:41:37,763 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:41:37,787 - INFO - Trace synthesis complete for reduced JSON profile of tr0.
+2026-03-12 17:42:19,823 - INFO - Processing trace: tr1
+2026-03-12 17:42:19,823 - INFO - Restoring parameters for trace: tr1
+2026-03-12 17:42:19,823 - WARNING - Could not find parameter files for trace: tr1
+2026-03-12 17:42:19,825 - INFO - Loaded reduced parameters for tr1 from locality_params/tr1/reduced_params_redis.json.
+2026-03-12 17:42:19,825 - INFO - Reconstructing trace: tr1
+2026-03-12 17:42:19,825 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:42:19,825 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:42:19,870 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:42:19,870 - INFO - Synthesizing trace for tr1 from reduced parameters.
+2026-03-12 17:42:28,885 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:42:28,885 - INFO - Step 1: Completed.
+2026-03-12 17:42:28,885 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:42:30,165 - INFO - Step 2: Completed.
+2026-03-12 17:42:30,165 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:42:30,165 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:42:30,165 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:42:30,165 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:42:30,165 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:42:31,377 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:42:31,385 - INFO - Trace synthesis complete for reduced JSON profile of tr1.
+2026-03-12 17:42:31,385 - INFO - Processing trace: tr2
+2026-03-12 17:42:31,385 - INFO - Restoring parameters for trace: tr2
+2026-03-12 17:42:31,385 - WARNING - Could not find parameter files for trace: tr2
+2026-03-12 17:42:31,386 - INFO - Loaded reduced parameters for tr2 from locality_params/tr2/reduced_params_redis.json.
+2026-03-12 17:42:31,386 - INFO - Reconstructing trace: tr2
+2026-03-12 17:42:31,386 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:42:31,386 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:42:31,416 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:42:31,416 - INFO - Synthesizing trace for tr2 from reduced parameters.
+2026-03-12 17:43:51,308 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:43:51,308 - INFO - Step 1: Completed.
+2026-03-12 17:43:51,308 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:44:04,091 - INFO - Step 2: Completed.
+2026-03-12 17:44:04,091 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:44:04,091 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:44:04,091 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:44:04,092 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:44:04,092 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:44:15,881 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:44:15,894 - INFO - Trace synthesis complete for reduced JSON profile of tr2.
+2026-03-12 17:44:15,894 - INFO - Processing trace: tr3
+2026-03-12 17:44:15,895 - INFO - Restoring parameters for trace: tr3
+2026-03-12 17:44:15,895 - WARNING - Could not find parameter files for trace: tr3
+2026-03-12 17:44:15,896 - INFO - Loaded reduced parameters for tr3 from locality_params/tr3/reduced_params_redis.json.
+2026-03-12 17:44:15,896 - INFO - Reconstructing trace: tr3
+2026-03-12 17:44:15,896 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:44:15,896 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:44:15,926 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:44:15,926 - INFO - Synthesizing trace for tr3 from reduced parameters.
+2026-03-12 17:49:43,974 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:49:43,974 - INFO - Step 1: Completed.
+2026-03-12 17:49:43,974 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:50:22,086 - INFO - Step 2: Completed.
+2026-03-12 17:50:22,087 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:50:22,087 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:50:22,087 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:50:22,087 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:50:22,087 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:50:58,409 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:50:58,459 - INFO - Trace synthesis complete for reduced JSON profile of tr3.
+2026-03-12 17:50:58,459 - INFO - Processing trace: tr4
+2026-03-12 17:50:58,460 - INFO - Restoring parameters for trace: tr4
+2026-03-12 17:50:58,460 - WARNING - Could not find parameter files for trace: tr4
+2026-03-12 17:50:58,461 - INFO - Loaded reduced parameters for tr4 from locality_params/tr4/reduced_params_redis.json.
+2026-03-12 17:50:58,461 - INFO - Reconstructing trace: tr4
+2026-03-12 17:50:58,461 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:50:58,461 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:50:58,517 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:50:58,517 - INFO - Synthesizing trace for tr4 from reduced parameters.
+2026-03-12 17:51:46,584 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:51:46,584 - INFO - Step 1: Completed.
+2026-03-12 17:51:46,584 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:51:53,772 - INFO - Step 2: Completed.
+2026-03-12 17:51:53,772 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:51:53,772 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:51:53,772 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:51:53,772 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:51:53,772 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:52:00,556 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:52:00,569 - INFO - Trace synthesis complete for reduced JSON profile of tr4.
+2026-03-12 17:52:00,569 - INFO - Processing trace: tr5
+2026-03-12 17:52:00,569 - INFO - Restoring parameters for trace: tr5
+2026-03-12 17:52:00,569 - WARNING - Could not find parameter files for trace: tr5
+2026-03-12 17:52:00,570 - INFO - Loaded reduced parameters for tr5 from locality_params/tr5/reduced_params_redis.json.
+2026-03-12 17:52:00,570 - INFO - Reconstructing trace: tr5
+2026-03-12 17:52:00,570 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:52:00,570 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:52:00,635 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:52:00,635 - INFO - Synthesizing trace for tr5 from reduced parameters.
+2026-03-12 17:53:41,143 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:53:41,143 - INFO - Step 1: Completed.
+2026-03-12 17:53:41,143 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:53:58,282 - INFO - Step 2: Completed.
+2026-03-12 17:53:58,282 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:53:58,282 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:53:58,282 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:53:58,282 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:53:58,282 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:54:14,595 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:54:14,613 - INFO - Trace synthesis complete for reduced JSON profile of tr5.
+2026-03-12 17:54:14,614 - INFO - Processing trace: tr6
+2026-03-12 17:54:14,614 - INFO - Restoring parameters for trace: tr6
+2026-03-12 17:54:14,614 - WARNING - Could not find parameter files for trace: tr6
+2026-03-12 17:54:14,615 - INFO - Loaded reduced parameters for tr6 from locality_params/tr6/reduced_params_redis.json.
+2026-03-12 17:54:14,615 - INFO - Reconstructing trace: tr6
+2026-03-12 17:54:14,615 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:54:14,615 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:54:14,704 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:54:14,704 - INFO - Synthesizing trace for tr6 from reduced parameters.
+2026-03-12 17:55:22,594 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:55:22,594 - INFO - Step 1: Completed.
+2026-03-12 17:55:22,594 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:55:33,003 - INFO - Step 2: Completed.
+2026-03-12 17:55:33,003 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:55:33,003 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:55:33,003 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:55:33,003 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:55:33,003 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:55:43,141 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:55:43,159 - INFO - Trace synthesis complete for reduced JSON profile of tr6.
+2026-03-12 17:55:43,159 - INFO - Processing trace: tr7
+2026-03-12 17:55:43,159 - INFO - Restoring parameters for trace: tr7
+2026-03-12 17:55:43,159 - WARNING - Could not find parameter files for trace: tr7
+2026-03-12 17:55:43,160 - INFO - Loaded reduced parameters for tr7 from locality_params/tr7/reduced_params_redis.json.
+2026-03-12 17:55:43,160 - INFO - Reconstructing trace: tr7
+2026-03-12 17:55:43,160 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:55:43,161 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:55:43,269 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:55:43,269 - INFO - Synthesizing trace for tr7 from reduced parameters.
+2026-03-12 17:57:51,955 - INFO - Saved synthesized traces to cache.
+2026-03-12 17:57:51,955 - INFO - Step 1: Completed.
+2026-03-12 17:57:51,955 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 17:58:11,668 - INFO - Step 2: Completed.
+2026-03-12 17:58:11,668 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 17:58:11,668 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 17:58:11,668 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 17:58:11,668 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 17:58:11,668 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 17:58:30,409 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 17:58:30,442 - INFO - Trace synthesis complete for reduced JSON profile of tr7.
+2026-03-12 17:58:30,442 - INFO - Processing trace: tr8
+2026-03-12 17:58:30,442 - INFO - Restoring parameters for trace: tr8
+2026-03-12 17:58:30,442 - WARNING - Could not find parameter files for trace: tr8
+2026-03-12 17:58:30,443 - INFO - Loaded reduced parameters for tr8 from locality_params/tr8/reduced_params_redis.json.
+2026-03-12 17:58:30,443 - INFO - Reconstructing trace: tr8
+2026-03-12 17:58:30,443 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 17:58:30,443 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 17:58:30,580 - INFO - Loaded synthesized traces from cache.
+2026-03-12 17:58:30,581 - INFO - Synthesizing trace for tr8 from reduced parameters.
+2026-03-12 18:01:48,098 - INFO - Saved synthesized traces to cache.
+2026-03-12 18:01:48,099 - INFO - Step 1: Completed.
+2026-03-12 18:01:48,099 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 18:02:19,163 - INFO - Step 2: Completed.
+2026-03-12 18:02:19,163 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 18:02:19,163 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 18:02:19,163 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 18:02:19,163 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 18:02:19,163 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 18:02:47,437 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 18:02:47,467 - INFO - Trace synthesis complete for reduced JSON profile of tr8.
+2026-03-12 18:02:47,467 - INFO - Processing trace: tr9
+2026-03-12 18:02:47,467 - INFO - Restoring parameters for trace: tr9
+2026-03-12 18:02:47,467 - WARNING - Could not find parameter files for trace: tr9
+2026-03-12 18:02:47,468 - INFO - Loaded reduced parameters for tr9 from locality_params/tr9/reduced_params_redis.json.
+2026-03-12 18:02:47,468 - INFO - Reconstructing trace: tr9
+2026-03-12 18:02:47,468 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 18:02:47,468 - INFO - Step 1: Reconstructing trace from reduced parameters.
+2026-03-12 18:02:47,577 - INFO - Loaded synthesized traces from cache.
+2026-03-12 18:02:47,577 - INFO - Synthesizing trace for tr9 from reduced parameters.
+2026-03-12 18:04:31,611 - INFO - Saved synthesized traces to cache.
+2026-03-12 18:04:31,611 - INFO - Step 1: Completed.
+2026-03-12 18:04:31,611 - INFO - Step 2: Generating SimTrace output for reduced parameters.
+2026-03-12 18:04:51,218 - INFO - Step 2: Completed.
+2026-03-12 18:04:51,218 - INFO - Step 3: Reconstructing trace from full parameters.
+2026-03-12 18:04:51,218 - INFO - Step 3: Skipped full-parameter reconstruction (full parameters unavailable or incomplete).
+2026-03-12 18:04:51,218 - INFO - Step 4: Skipped full-parameter simtrace output.
+2026-03-12 18:04:51,218 - INFO - Step 5: Generating SimTrace output for original trace (base).
+2026-03-12 18:04:51,218 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
+2026-03-12 18:05:10,278 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
+2026-03-12 18:05:10,297 - INFO - Trace synthesis complete for reduced JSON profile of tr9.

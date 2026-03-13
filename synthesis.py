@@ -22,6 +22,7 @@ from matplotlib.ticker import LogFormatter
 from locality import rd_to_bin, bin_to_rd, OrderedList, compute_reuse_distances_only
 from plotting import plot_page_reuse_distance_cdf
 
+_COMPRESSIBILITY_CACHE = None
 
 class InfinitePool:
   def __init__(self):
@@ -347,11 +348,16 @@ def parse_compressibility():
     """
     Parses compressibility data from text files or loads from a pickle file.
     """
+    global _COMPRESSIBILITY_CACHE
+    if _COMPRESSIBILITY_CACHE is not None:
+        return _COMPRESSIBILITY_CACHE
+
     pickle_path = './compressibility/comp.pickle'
     if os.path.exists(pickle_path):
         print(f"Loading compressibility data from {pickle_path}")
         with open(pickle_path, 'rb') as f:
             compressibility_dfs = pickle.load(f)
+        _COMPRESSIBILITY_CACHE = compressibility_dfs
         return compressibility_dfs
 
     compressibility_dfs = {}
@@ -388,6 +394,7 @@ def parse_compressibility():
         pickle.dump(compressibility_dfs, f)
     print(f"Saved compressibility data to {pickle_path}")
 
+    _COMPRESSIBILITY_CACHE = compressibility_dfs
     return compressibility_dfs
 
 def generate_simtrace(trace, key, random_page_nums, n_pages, synth, page_nums=[], times=[]):

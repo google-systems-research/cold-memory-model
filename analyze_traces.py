@@ -57,7 +57,26 @@ def _configure_worker_logging(trace_name: str, log_dir: Path):
   root.addHandler(sh)
 
 
-def process_trace(trace_file: str, input_dir: Path):
+def _should_skip_access_count(
+    mode: str,
+    trace_path: Path,
+    threshold_gb: float,
+) -> bool:
+  if mode == 'always':
+    return True
+  if mode == 'never':
+    return False
+  # auto mode
+  threshold_bytes = int(threshold_gb * (1024 ** 3))
+  return trace_path.stat().st_size >= threshold_bytes
+
+
+def process_trace(
+    trace_file: str,
+    input_dir: Path,
+    skip_access_count_mode: str,
+    large_trace_threshold_gb: float,
+):
   """Load, analyse, and reduce a single trace file end-to-end.
 
   Designed to run inside a subprocess spawned by ProcessPoolExecutor.
@@ -73,22 +92,40 @@ def process_trace(trace_file: str, input_dir: Path):
   output_dir.mkdir(parents=True, exist_ok=True)
   figure_dir = output_dir / 'figures'
   figure_dir.mkdir(exist_ok=True)
+  trace_path = input_dir / trace_file
 
   _configure_worker_logging(trace_name, output_dir)
 
   try:
     logging.info("Starting.")
+    skip_access_count = _should_skip_access_count(
+      skip_access_count_mode, trace_path, large_trace_threshold_gb
+    )
+    if skip_access_count:
+      size_gb = trace_path.stat().st_size / (1024 ** 3)
+      logging.info(
+        f"Large trace mode: skipping access count distribution "
+        f"(file={size_gb:.1f} GiB, mode={skip_access_count_mode})."
+      )
 
     dfs = file_io.load_trace_dataframes([trace_file], base_path=str(input_dir))
     clean_dfs = file_io.preprocess_traces(dfs)
     if not clean_dfs:
       raise ValueError(f"No data loaded from '{trace_file}'.")
     clean_df = clean_dfs[0]
+    # Release raw string-heavy DataFrames before expensive extraction work.
+    del dfs
+    del clean_dfs
 
     full_param_path = output_dir / 'full_parameters.pkl'
     full_params = file_io.load_pickle(full_param_path)
     if full_params is None:
-      full_params = locality.extract_full_parameters(clean_df, trace_name, figure_dir)
+      full_params = locality.extract_full_parameters(
+        clean_df,
+        trace_name,
+        figure_dir,
+        skip_access_count=skip_access_count
+      )
       file_io.save_pickle(full_params, full_param_path)
 
     plotting.plot_cdfs(full_params, trace_name, figure_dir)
@@ -116,6 +153,21 @@ def main():
                       help='Trace files to process. Defaults to all .csv in input_traces/.')
   parser.add_argument('--workers', type=int, default=None,
                       help='Number of parallel worker processes. Defaults to number of traces.')
+  parser.add_argument(
+      '--skip-access-count',
+      choices=['auto', 'always', 'never'],
+      default='auto',
+      help=(
+          "Skip full access-count distribution extraction. "
+          "'auto' skips only for large traces."
+      ),
+  )
+  parser.add_argument(
+      '--large-trace-threshold-gb',
+      type=float,
+      default=50,
+      help="File-size threshold in GiB used when --skip-access-count=auto.",
+  )
   args = parser.parse_args()
 
   input_dir = Path('./input_traces')
@@ -135,7 +187,13 @@ def main():
 
   with ProcessPoolExecutor(max_workers=n_workers) as executor:
     futures = {
-      executor.submit(process_trace, tf, input_dir): tf
+      executor.submit(
+        process_trace,
+        tf,
+        input_dir,
+        args.skip_access_count,
+        args.large_trace_threshold_gb,
+      ): tf
       for tf in trace_files
     }
 

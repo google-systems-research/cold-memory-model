@@ -144,6 +144,7 @@ def plot_cdfs(full_params, trace_name, output_dir):
     plt.plot(x, cdf, label=f'{2 ** shift}B', color=colors[i % len(colors)])
   plt.xlabel("Reuse Distance")
   plt.ylabel("CDF")
+  plt.ylim(0, 1)
   plt.title(f"CDF of Reuse Distances for {trace_name}")
   plt.legend()
   plt.grid(True)

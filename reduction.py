@@ -325,7 +325,20 @@ def _reduce_access_count_distribution(full_params, trace_name, output_dir, bypas
     """Reduces the access count distribution."""
     logging.info("Reducing access count distribution...")
     t0 = time.time()
-    (count, count_freq) = full_params['access_count_dist']
+    access_count_dist = full_params.get('access_count_dist')
+    if access_count_dist is None:
+        logging.info("Access count distribution was skipped in full-parameter extraction.")
+        empty_i = np.array([], dtype=int)
+        empty_f = np.array([], dtype=float)
+        return (empty_i, empty_i), (empty_f, empty_f, empty_i)
+
+    (count, count_freq) = access_count_dist
+    if len(count) == 0:
+        logging.info("Access count distribution is empty.")
+        empty_i = np.array([], dtype=int)
+        empty_f = np.array([], dtype=float)
+        return (empty_i, empty_i), (empty_f, empty_f, empty_i)
+
     max_x = count[-1] + 1
     x_data = np.asarray(count, dtype=int)
     y_data = np.asarray(count_freq)
