@@ -200,3 +200,1953 @@
 2026-03-12 18:04:51,218 - INFO - Original trace is unavailable; reusing the reduced synthetic trace for base output.
 2026-03-12 18:05:10,278 - INFO - Step 5: Completed using the reduced synthetic trace fallback.
 2026-03-12 18:05:10,297 - INFO - Trace synthesis complete for reduced JSON profile of tr9.
+2026-03-12 23:08:15,971 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,0,0
+2026-03-12 23:08:15,971 - INFO - Using compressibility targets: [('lz4', 256)]
+2026-03-12 23:08:15,971 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:08:15,971 - INFO - Step 1: Completed.
+2026-03-12 23:08:15,971 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:08:15,971 - INFO - Generating access count distribution for variants (0, 0)
+2026-03-12 23:09:53,742 - INFO - Saved access count distribution to cache.
+2026-03-12 23:09:53,743 - INFO - Step 2: Completed.
+2026-03-12 23:09:53,743 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:09:53,743 - INFO - Generating Markov matrix for variant 0
+2026-03-12 23:09:53,743 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:09:53,743 - INFO - Step 3: Completed.
+2026-03-12 23:09:53,744 - INFO - Step 4: Generating page trace.
+2026-03-12 23:09:53,744 - INFO - Generating page trace for variants (0, 0, 0)
+2026-03-12 23:10:04,731 - INFO - Saved page trace to cache.
+2026-03-12 23:10:04,731 - INFO - Step 4: Completed.
+2026-03-12 23:10:04,731 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:10:04,731 - INFO - Generating Bit Flip Rate matrix for variant 0
+2026-03-12 23:10:04,731 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:10:04,731 - INFO - Step 5: Completed.
+2026-03-12 23:10:04,731 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:10:04,731 - INFO - Generating memory trace for variants (0, 0, 0, 0)
+2026-03-12 23:10:07,608 - INFO - Saved memory trace to cache.
+2026-03-12 23:10:07,608 - INFO - Step 6: Completed.
+2026-03-12 23:10:07,608 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:10:07,608 - INFO - Generating short interval ratio for variant 0
+2026-03-12 23:10:07,609 - INFO - Saved short interval ratio to cache.
+2026-03-12 23:10:07,609 - INFO - Step 7: Completed.
+2026-03-12 23:10:07,609 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:10:07,834 - INFO - Step 9: Completed.
+2026-03-12 23:10:07,835 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:36,424 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,0,0
+2026-03-12 23:19:36,424 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,0,0
+2026-03-12 23:19:36,424 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:36,424 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:36,424 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:36,424 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:36,424 - INFO - Step 1: Completed.
+2026-03-12 23:19:36,424 - INFO - Step 1: Completed.
+2026-03-12 23:19:36,424 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:36,424 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:36,424 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:36,424 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:36,424 - INFO - Step 2: Completed.
+2026-03-12 23:19:36,424 - INFO - Step 2: Completed.
+2026-03-12 23:19:36,424 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:36,424 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:36,424 - INFO - Generating Markov matrix for variant 2
+2026-03-12 23:19:36,424 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:36,424 - INFO - Step 3: Completed.
+2026-03-12 23:19:36,424 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:36,425 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:19:36,425 - INFO - Step 3: Completed.
+2026-03-12 23:19:36,425 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:36,425 - INFO - Generating page trace for variants (0, 0, 2)
+2026-03-12 23:19:36,428 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:36,428 - INFO - Step 4: Completed.
+2026-03-12 23:19:36,428 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:36,428 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:36,428 - INFO - Step 5: Completed.
+2026-03-12 23:19:36,428 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:36,430 - INFO - Loaded memory trace from cache.
+2026-03-12 23:19:36,430 - INFO - Step 6: Completed.
+2026-03-12 23:19:36,430 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:36,430 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:36,430 - INFO - Step 7: Completed.
+2026-03-12 23:19:36,431 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:36,495 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,0,0
+2026-03-12 23:19:36,495 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:36,495 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:36,495 - INFO - Step 1: Completed.
+2026-03-12 23:19:36,495 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:36,495 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:36,495 - INFO - Step 2: Completed.
+2026-03-12 23:19:36,495 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:36,495 - INFO - Generating Markov matrix for variant 3
+2026-03-12 23:19:36,496 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:19:36,496 - INFO - Step 3: Completed.
+2026-03-12 23:19:36,496 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:36,496 - INFO - Generating page trace for variants (0, 0, 3)
+2026-03-12 23:19:36,771 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,0,0
+2026-03-12 23:19:36,771 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:36,771 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:36,771 - INFO - Step 1: Completed.
+2026-03-12 23:19:36,771 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:36,772 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:36,772 - INFO - Step 2: Completed.
+2026-03-12 23:19:36,772 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:36,772 - INFO - Generating Markov matrix for variant 1
+2026-03-12 23:19:36,773 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:19:36,773 - INFO - Step 3: Completed.
+2026-03-12 23:19:36,773 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:36,773 - INFO - Generating page trace for variants (0, 0, 1)
+2026-03-12 23:19:38,021 - INFO - Step 9: Completed.
+2026-03-12 23:19:38,022 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:39,353 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,1,0
+2026-03-12 23:19:39,353 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:39,354 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:39,354 - INFO - Step 1: Completed.
+2026-03-12 23:19:39,354 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:39,354 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:39,354 - INFO - Step 2: Completed.
+2026-03-12 23:19:39,354 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:39,354 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:39,354 - INFO - Step 3: Completed.
+2026-03-12 23:19:39,354 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:39,357 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:39,357 - INFO - Step 4: Completed.
+2026-03-12 23:19:39,357 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:39,357 - INFO - Generating Bit Flip Rate matrix for variant 1
+2026-03-12 23:19:39,358 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:19:39,358 - INFO - Step 5: Completed.
+2026-03-12 23:19:39,358 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:39,358 - INFO - Generating memory trace for variants (0, 0, 0, 1)
+2026-03-12 23:19:42,151 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:42,151 - INFO - Step 6: Completed.
+2026-03-12 23:19:42,151 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:42,151 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:42,151 - INFO - Step 7: Completed.
+2026-03-12 23:19:42,151 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:43,656 - INFO - Step 9: Completed.
+2026-03-12 23:19:43,658 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:45,269 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,2,0
+2026-03-12 23:19:45,269 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:45,270 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:45,270 - INFO - Step 1: Completed.
+2026-03-12 23:19:45,270 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:45,270 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:45,270 - INFO - Step 2: Completed.
+2026-03-12 23:19:45,270 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:45,270 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:45,270 - INFO - Step 3: Completed.
+2026-03-12 23:19:45,270 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:45,273 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:45,273 - INFO - Step 4: Completed.
+2026-03-12 23:19:45,273 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:45,273 - INFO - Generating Bit Flip Rate matrix for variant 2
+2026-03-12 23:19:45,274 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:19:45,274 - INFO - Step 5: Completed.
+2026-03-12 23:19:45,274 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:45,274 - INFO - Generating memory trace for variants (0, 0, 0, 2)
+2026-03-12 23:19:48,075 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:48,075 - INFO - Step 6: Completed.
+2026-03-12 23:19:48,075 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:48,076 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:48,076 - INFO - Step 7: Completed.
+2026-03-12 23:19:48,076 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:48,166 - INFO - Saved page trace to cache.
+2026-03-12 23:19:48,166 - INFO - Step 4: Completed.
+2026-03-12 23:19:48,166 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:48,166 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:48,166 - INFO - Step 5: Completed.
+2026-03-12 23:19:48,166 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:48,166 - INFO - Generating memory trace for variants (0, 0, 1, 0)
+2026-03-12 23:19:49,589 - INFO - Step 9: Completed.
+2026-03-12 23:19:49,591 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:49,929 - INFO - Saved page trace to cache.
+2026-03-12 23:19:49,929 - INFO - Step 4: Completed.
+2026-03-12 23:19:49,929 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:49,929 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:49,929 - INFO - Step 5: Completed.
+2026-03-12 23:19:49,929 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:49,929 - INFO - Generating memory trace for variants (0, 0, 3, 0)
+2026-03-12 23:19:50,272 - INFO - Saved page trace to cache.
+2026-03-12 23:19:50,272 - INFO - Step 4: Completed.
+2026-03-12 23:19:50,272 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:50,272 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:50,272 - INFO - Step 5: Completed.
+2026-03-12 23:19:50,272 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:50,272 - INFO - Generating memory trace for variants (0, 0, 2, 0)
+2026-03-12 23:19:51,101 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,3,0
+2026-03-12 23:19:51,101 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:51,101 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:51,101 - INFO - Step 1: Completed.
+2026-03-12 23:19:51,101 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:51,101 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:51,101 - INFO - Step 2: Completed.
+2026-03-12 23:19:51,101 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:51,101 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:51,101 - INFO - Step 3: Completed.
+2026-03-12 23:19:51,101 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:51,105 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:51,105 - INFO - Step 4: Completed.
+2026-03-12 23:19:51,105 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:51,105 - INFO - Generating Bit Flip Rate matrix for variant 3
+2026-03-12 23:19:51,105 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:19:51,106 - INFO - Step 5: Completed.
+2026-03-12 23:19:51,106 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:51,106 - INFO - Generating memory trace for variants (0, 0, 0, 3)
+2026-03-12 23:19:51,593 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:51,593 - INFO - Step 6: Completed.
+2026-03-12 23:19:51,593 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:51,593 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:51,593 - INFO - Step 7: Completed.
+2026-03-12 23:19:51,593 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:53,484 - INFO - Step 9: Completed.
+2026-03-12 23:19:53,486 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:54,018 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:54,018 - INFO - Step 6: Completed.
+2026-03-12 23:19:54,018 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:54,019 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:54,019 - INFO - Step 7: Completed.
+2026-03-12 23:19:54,019 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:54,111 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:54,111 - INFO - Step 6: Completed.
+2026-03-12 23:19:54,111 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:54,111 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:54,111 - INFO - Step 7: Completed.
+2026-03-12 23:19:54,111 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:54,571 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:54,571 - INFO - Step 6: Completed.
+2026-03-12 23:19:54,571 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:54,571 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:54,571 - INFO - Step 7: Completed.
+2026-03-12 23:19:54,571 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:19:54,846 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,1,0
+2026-03-12 23:19:54,846 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:54,847 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:54,847 - INFO - Step 1: Completed.
+2026-03-12 23:19:54,847 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:54,847 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:54,847 - INFO - Step 2: Completed.
+2026-03-12 23:19:54,847 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:54,847 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:54,847 - INFO - Step 3: Completed.
+2026-03-12 23:19:54,847 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:54,851 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:54,851 - INFO - Step 4: Completed.
+2026-03-12 23:19:54,851 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:54,851 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:54,851 - INFO - Step 5: Completed.
+2026-03-12 23:19:54,851 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:54,851 - INFO - Generating memory trace for variants (0, 0, 1, 1)
+2026-03-12 23:19:55,572 - INFO - Step 9: Completed.
+2026-03-12 23:19:55,574 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:56,134 - INFO - Step 9: Completed.
+2026-03-12 23:19:56,136 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:56,834 - INFO - Step 9: Completed.
+2026-03-12 23:19:56,837 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:19:57,657 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,4,0
+2026-03-12 23:19:57,657 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:57,658 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:57,658 - INFO - Step 1: Completed.
+2026-03-12 23:19:57,658 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:57,658 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:57,658 - INFO - Step 2: Completed.
+2026-03-12 23:19:57,658 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:57,658 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:57,658 - INFO - Step 3: Completed.
+2026-03-12 23:19:57,658 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:57,664 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:57,664 - INFO - Step 4: Completed.
+2026-03-12 23:19:57,664 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:57,664 - INFO - Generating Bit Flip Rate matrix for variant 4
+2026-03-12 23:19:57,664 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:19:57,664 - INFO - Step 5: Completed.
+2026-03-12 23:19:57,664 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:57,664 - INFO - Generating memory trace for variants (0, 0, 0, 4)
+2026-03-12 23:19:57,817 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,1,0
+2026-03-12 23:19:57,817 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:57,818 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:57,818 - INFO - Step 1: Completed.
+2026-03-12 23:19:57,818 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:57,818 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:57,818 - INFO - Step 2: Completed.
+2026-03-12 23:19:57,818 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:57,818 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:57,818 - INFO - Step 3: Completed.
+2026-03-12 23:19:57,818 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:57,823 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:57,823 - INFO - Step 4: Completed.
+2026-03-12 23:19:57,823 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:57,823 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:57,823 - INFO - Step 5: Completed.
+2026-03-12 23:19:57,823 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:57,823 - INFO - Generating memory trace for variants (0, 0, 2, 1)
+2026-03-12 23:19:58,217 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,1,0
+2026-03-12 23:19:58,217 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:19:58,217 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:19:58,217 - INFO - Step 1: Completed.
+2026-03-12 23:19:58,217 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:19:58,217 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:19:58,217 - INFO - Step 2: Completed.
+2026-03-12 23:19:58,217 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:19:58,217 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:19:58,217 - INFO - Step 3: Completed.
+2026-03-12 23:19:58,217 - INFO - Step 4: Generating page trace.
+2026-03-12 23:19:58,223 - INFO - Loaded page trace from cache.
+2026-03-12 23:19:58,223 - INFO - Step 4: Completed.
+2026-03-12 23:19:58,223 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:19:58,223 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:19:58,223 - INFO - Step 5: Completed.
+2026-03-12 23:19:58,223 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:19:58,223 - INFO - Generating memory trace for variants (0, 0, 3, 1)
+2026-03-12 23:19:58,413 - INFO - Saved memory trace to cache.
+2026-03-12 23:19:58,413 - INFO - Step 6: Completed.
+2026-03-12 23:19:58,413 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:19:58,413 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:19:58,413 - INFO - Step 7: Completed.
+2026-03-12 23:19:58,413 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:00,091 - INFO - Step 9: Completed.
+2026-03-12 23:20:00,092 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:00,649 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:00,649 - INFO - Step 6: Completed.
+2026-03-12 23:20:00,649 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:00,649 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:00,650 - INFO - Step 7: Completed.
+2026-03-12 23:20:00,650 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:01,447 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,2,0
+2026-03-12 23:20:01,448 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:01,448 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:01,448 - INFO - Step 1: Completed.
+2026-03-12 23:20:01,448 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:01,448 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:01,448 - INFO - Step 2: Completed.
+2026-03-12 23:20:01,448 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:01,448 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:01,448 - INFO - Step 3: Completed.
+2026-03-12 23:20:01,448 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:01,453 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:01,453 - INFO - Step 4: Completed.
+2026-03-12 23:20:01,453 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:01,453 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:01,453 - INFO - Step 5: Completed.
+2026-03-12 23:20:01,453 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:01,453 - INFO - Generating memory trace for variants (0, 0, 1, 2)
+2026-03-12 23:20:01,660 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:01,660 - INFO - Step 6: Completed.
+2026-03-12 23:20:01,660 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:01,660 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:01,660 - INFO - Step 7: Completed.
+2026-03-12 23:20:01,661 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:02,209 - INFO - Step 9: Completed.
+2026-03-12 23:20:02,210 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:03,224 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:03,224 - INFO - Step 6: Completed.
+2026-03-12 23:20:03,224 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:03,224 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:03,224 - INFO - Step 7: Completed.
+2026-03-12 23:20:03,224 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:03,542 - INFO - Step 9: Completed.
+2026-03-12 23:20:03,544 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:03,587 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,5,0
+2026-03-12 23:20:03,587 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:03,587 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:03,587 - INFO - Step 1: Completed.
+2026-03-12 23:20:03,587 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:03,587 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:03,587 - INFO - Step 2: Completed.
+2026-03-12 23:20:03,587 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:03,587 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:03,588 - INFO - Step 3: Completed.
+2026-03-12 23:20:03,588 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:03,591 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:03,591 - INFO - Step 4: Completed.
+2026-03-12 23:20:03,591 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:03,591 - INFO - Generating Bit Flip Rate matrix for variant 5
+2026-03-12 23:20:03,592 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:20:03,592 - INFO - Step 5: Completed.
+2026-03-12 23:20:03,592 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:03,592 - INFO - Generating memory trace for variants (0, 0, 0, 5)
+2026-03-12 23:20:04,920 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,2,0
+2026-03-12 23:20:04,920 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:04,920 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:04,921 - INFO - Step 1: Completed.
+2026-03-12 23:20:04,921 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:04,921 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:04,921 - INFO - Step 2: Completed.
+2026-03-12 23:20:04,921 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:04,921 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:04,921 - INFO - Step 3: Completed.
+2026-03-12 23:20:04,921 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:04,923 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:04,923 - INFO - Step 6: Completed.
+2026-03-12 23:20:04,923 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:04,923 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:04,923 - INFO - Step 7: Completed.
+2026-03-12 23:20:04,923 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:04,925 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:04,926 - INFO - Step 4: Completed.
+2026-03-12 23:20:04,926 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:04,926 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:04,926 - INFO - Step 5: Completed.
+2026-03-12 23:20:04,926 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:04,926 - INFO - Generating memory trace for variants (0, 0, 2, 2)
+2026-03-12 23:20:05,420 - INFO - Step 9: Completed.
+2026-03-12 23:20:05,422 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:06,568 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:06,568 - INFO - Step 6: Completed.
+2026-03-12 23:20:06,568 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:06,568 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:06,568 - INFO - Step 7: Completed.
+2026-03-12 23:20:06,568 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:06,652 - INFO - Step 9: Completed.
+2026-03-12 23:20:06,653 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:06,786 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,2,0
+2026-03-12 23:20:06,786 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:06,786 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:06,787 - INFO - Step 1: Completed.
+2026-03-12 23:20:06,787 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:06,787 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:06,787 - INFO - Step 2: Completed.
+2026-03-12 23:20:06,787 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:06,787 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:06,787 - INFO - Step 3: Completed.
+2026-03-12 23:20:06,787 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:06,792 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:06,792 - INFO - Step 4: Completed.
+2026-03-12 23:20:06,793 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:06,793 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:06,793 - INFO - Step 5: Completed.
+2026-03-12 23:20:06,793 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:06,793 - INFO - Generating memory trace for variants (0, 0, 3, 2)
+2026-03-12 23:20:08,017 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,3,0
+2026-03-12 23:20:08,018 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:08,018 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:08,018 - INFO - Step 1: Completed.
+2026-03-12 23:20:08,018 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:08,018 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:08,018 - INFO - Step 2: Completed.
+2026-03-12 23:20:08,018 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:08,018 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:08,018 - INFO - Step 3: Completed.
+2026-03-12 23:20:08,018 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:08,022 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:08,022 - INFO - Step 4: Completed.
+2026-03-12 23:20:08,022 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:08,022 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:08,022 - INFO - Step 5: Completed.
+2026-03-12 23:20:08,022 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:08,022 - INFO - Generating memory trace for variants (0, 0, 1, 3)
+2026-03-12 23:20:08,453 - INFO - Step 9: Completed.
+2026-03-12 23:20:08,455 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:08,821 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:08,821 - INFO - Step 6: Completed.
+2026-03-12 23:20:08,821 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:08,821 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:08,821 - INFO - Step 7: Completed.
+2026-03-12 23:20:08,821 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:09,855 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,6,0
+2026-03-12 23:20:09,855 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:09,855 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:09,855 - INFO - Step 1: Completed.
+2026-03-12 23:20:09,855 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:09,855 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:09,855 - INFO - Step 2: Completed.
+2026-03-12 23:20:09,855 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:09,855 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:09,855 - INFO - Step 3: Completed.
+2026-03-12 23:20:09,855 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:09,859 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:09,859 - INFO - Step 4: Completed.
+2026-03-12 23:20:09,859 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:09,859 - INFO - Generating Bit Flip Rate matrix for variant 6
+2026-03-12 23:20:09,860 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:20:09,860 - INFO - Step 5: Completed.
+2026-03-12 23:20:09,860 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:09,860 - INFO - Generating memory trace for variants (0, 0, 0, 6)
+2026-03-12 23:20:10,674 - INFO - Step 9: Completed.
+2026-03-12 23:20:10,676 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:11,445 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:11,445 - INFO - Step 6: Completed.
+2026-03-12 23:20:11,445 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:11,445 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:11,445 - INFO - Step 7: Completed.
+2026-03-12 23:20:11,445 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:11,482 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:11,482 - INFO - Step 6: Completed.
+2026-03-12 23:20:11,482 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:11,482 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:11,482 - INFO - Step 7: Completed.
+2026-03-12 23:20:11,482 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:12,036 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,3,0
+2026-03-12 23:20:12,036 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:12,036 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:12,036 - INFO - Step 1: Completed.
+2026-03-12 23:20:12,036 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:12,036 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:12,036 - INFO - Step 2: Completed.
+2026-03-12 23:20:12,036 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:12,036 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:12,036 - INFO - Step 3: Completed.
+2026-03-12 23:20:12,036 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:12,041 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:12,041 - INFO - Step 4: Completed.
+2026-03-12 23:20:12,041 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:12,041 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:12,041 - INFO - Step 5: Completed.
+2026-03-12 23:20:12,041 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:12,041 - INFO - Generating memory trace for variants (0, 0, 2, 3)
+2026-03-12 23:20:12,805 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:12,805 - INFO - Step 6: Completed.
+2026-03-12 23:20:12,805 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:12,805 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:12,805 - INFO - Step 7: Completed.
+2026-03-12 23:20:12,805 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:13,170 - INFO - Step 9: Completed.
+2026-03-12 23:20:13,172 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:13,594 - INFO - Step 9: Completed.
+2026-03-12 23:20:13,596 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:14,448 - INFO - Step 9: Completed.
+2026-03-12 23:20:14,450 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:14,742 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,4,0
+2026-03-12 23:20:14,742 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:14,743 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:14,743 - INFO - Step 1: Completed.
+2026-03-12 23:20:14,743 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:14,743 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:14,743 - INFO - Step 2: Completed.
+2026-03-12 23:20:14,743 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:14,743 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:14,743 - INFO - Step 3: Completed.
+2026-03-12 23:20:14,743 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:14,748 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:14,748 - INFO - Step 4: Completed.
+2026-03-12 23:20:14,748 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:14,748 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:14,748 - INFO - Step 5: Completed.
+2026-03-12 23:20:14,748 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:14,748 - INFO - Generating memory trace for variants (0, 0, 1, 4)
+2026-03-12 23:20:15,035 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,3,0
+2026-03-12 23:20:15,035 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:15,035 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:15,035 - INFO - Step 1: Completed.
+2026-03-12 23:20:15,035 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:15,035 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:15,035 - INFO - Step 2: Completed.
+2026-03-12 23:20:15,036 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:15,036 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:15,036 - INFO - Step 3: Completed.
+2026-03-12 23:20:15,036 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:15,041 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:15,042 - INFO - Step 4: Completed.
+2026-03-12 23:20:15,042 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:15,042 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:15,042 - INFO - Step 5: Completed.
+2026-03-12 23:20:15,042 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:15,042 - INFO - Generating memory trace for variants (0, 0, 3, 3)
+2026-03-12 23:20:15,787 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,7,0
+2026-03-12 23:20:15,787 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:15,787 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:15,787 - INFO - Step 1: Completed.
+2026-03-12 23:20:15,787 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:15,787 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:15,787 - INFO - Step 2: Completed.
+2026-03-12 23:20:15,787 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:15,787 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:15,788 - INFO - Step 3: Completed.
+2026-03-12 23:20:15,788 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:15,791 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:15,791 - INFO - Step 4: Completed.
+2026-03-12 23:20:15,791 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:15,791 - INFO - Generating Bit Flip Rate matrix for variant 7
+2026-03-12 23:20:15,792 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:20:15,792 - INFO - Step 5: Completed.
+2026-03-12 23:20:15,792 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:15,792 - INFO - Generating memory trace for variants (0, 0, 0, 7)
+2026-03-12 23:20:15,999 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:15,999 - INFO - Step 6: Completed.
+2026-03-12 23:20:15,999 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:15,999 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:15,999 - INFO - Step 7: Completed.
+2026-03-12 23:20:15,999 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:17,821 - INFO - Step 9: Completed.
+2026-03-12 23:20:17,823 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:18,265 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:18,265 - INFO - Step 6: Completed.
+2026-03-12 23:20:18,265 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:18,265 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:18,266 - INFO - Step 7: Completed.
+2026-03-12 23:20:18,266 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:18,694 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:18,694 - INFO - Step 6: Completed.
+2026-03-12 23:20:18,694 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:18,694 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:18,694 - INFO - Step 7: Completed.
+2026-03-12 23:20:18,694 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:19,183 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,4,0
+2026-03-12 23:20:19,183 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:19,183 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:19,183 - INFO - Step 1: Completed.
+2026-03-12 23:20:19,183 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:19,183 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:19,183 - INFO - Step 2: Completed.
+2026-03-12 23:20:19,183 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:19,184 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:19,184 - INFO - Step 3: Completed.
+2026-03-12 23:20:19,184 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:19,188 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:19,189 - INFO - Step 4: Completed.
+2026-03-12 23:20:19,189 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:19,189 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:19,189 - INFO - Step 5: Completed.
+2026-03-12 23:20:19,189 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:19,189 - INFO - Generating memory trace for variants (0, 0, 2, 4)
+2026-03-12 23:20:19,681 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:19,681 - INFO - Step 6: Completed.
+2026-03-12 23:20:19,681 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:19,682 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:19,682 - INFO - Step 7: Completed.
+2026-03-12 23:20:19,682 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:19,979 - INFO - Step 9: Completed.
+2026-03-12 23:20:19,981 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:20,252 - INFO - Step 9: Completed.
+2026-03-12 23:20:20,254 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:21,395 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,5,0
+2026-03-12 23:20:21,395 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:21,396 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:21,396 - INFO - Step 1: Completed.
+2026-03-12 23:20:21,396 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:21,396 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:21,396 - INFO - Step 2: Completed.
+2026-03-12 23:20:21,396 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:21,396 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:21,396 - INFO - Step 3: Completed.
+2026-03-12 23:20:21,396 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:21,400 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:21,400 - INFO - Step 4: Completed.
+2026-03-12 23:20:21,400 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:21,400 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:21,400 - INFO - Step 5: Completed.
+2026-03-12 23:20:21,400 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:21,400 - INFO - Generating memory trace for variants (0, 0, 1, 5)
+2026-03-12 23:20:21,640 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,0,8,0
+2026-03-12 23:20:21,640 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:21,640 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:21,640 - INFO - Step 1: Completed.
+2026-03-12 23:20:21,640 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:21,640 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:21,640 - INFO - Step 2: Completed.
+2026-03-12 23:20:21,640 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:21,640 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:21,640 - INFO - Step 3: Completed.
+2026-03-12 23:20:21,640 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:21,644 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:21,644 - INFO - Step 4: Completed.
+2026-03-12 23:20:21,644 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:21,644 - INFO - Generating Bit Flip Rate matrix for variant 8
+2026-03-12 23:20:21,644 - INFO - Saved Bit Flip Rate matrix to cache.
+2026-03-12 23:20:21,644 - INFO - Step 5: Completed.
+2026-03-12 23:20:21,644 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:21,644 - INFO - Generating memory trace for variants (0, 0, 0, 8)
+2026-03-12 23:20:21,888 - INFO - Step 9: Completed.
+2026-03-12 23:20:21,890 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:23,197 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:23,197 - INFO - Step 6: Completed.
+2026-03-12 23:20:23,197 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:23,197 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:23,197 - INFO - Step 7: Completed.
+2026-03-12 23:20:23,197 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:23,245 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,4,0
+2026-03-12 23:20:23,245 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:23,245 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:23,245 - INFO - Step 1: Completed.
+2026-03-12 23:20:23,245 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:23,245 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:23,245 - INFO - Step 2: Completed.
+2026-03-12 23:20:23,245 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:23,245 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:23,245 - INFO - Step 3: Completed.
+2026-03-12 23:20:23,245 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:23,251 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:23,251 - INFO - Step 4: Completed.
+2026-03-12 23:20:23,251 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:23,251 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:23,251 - INFO - Step 5: Completed.
+2026-03-12 23:20:23,251 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:23,251 - INFO - Generating memory trace for variants (0, 0, 3, 4)
+2026-03-12 23:20:24,523 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:24,523 - INFO - Step 6: Completed.
+2026-03-12 23:20:24,523 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:24,523 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:24,523 - INFO - Step 7: Completed.
+2026-03-12 23:20:24,523 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:24,772 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:24,772 - INFO - Step 6: Completed.
+2026-03-12 23:20:24,772 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:24,772 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:24,772 - INFO - Step 7: Completed.
+2026-03-12 23:20:24,772 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:25,017 - INFO - Step 9: Completed.
+2026-03-12 23:20:25,019 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:26,103 - INFO - Step 9: Completed.
+2026-03-12 23:20:26,104 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:26,538 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,5,0
+2026-03-12 23:20:26,538 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:26,538 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:26,538 - INFO - Step 1: Completed.
+2026-03-12 23:20:26,538 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:26,538 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:26,538 - INFO - Step 2: Completed.
+2026-03-12 23:20:26,538 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:26,538 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:26,538 - INFO - Step 3: Completed.
+2026-03-12 23:20:26,538 - INFO - Step 9: Completed.
+2026-03-12 23:20:26,538 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:26,540 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:26,543 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:26,543 - INFO - Step 4: Completed.
+2026-03-12 23:20:26,543 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:26,543 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:26,543 - INFO - Step 5: Completed.
+2026-03-12 23:20:26,543 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:26,543 - INFO - Generating memory trace for variants (0, 0, 2, 5)
+2026-03-12 23:20:27,496 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,0,0
+2026-03-12 23:20:27,496 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:27,496 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:27,496 - INFO - Step 1: Completed.
+2026-03-12 23:20:27,496 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:27,496 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:27,497 - INFO - Step 2: Completed.
+2026-03-12 23:20:27,497 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:27,497 - INFO - Generating Markov matrix for variant 4
+2026-03-12 23:20:27,497 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:20:27,497 - INFO - Step 3: Completed.
+2026-03-12 23:20:27,497 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:27,497 - INFO - Generating page trace for variants (0, 0, 4)
+2026-03-12 23:20:27,929 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,6,0
+2026-03-12 23:20:27,929 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:27,930 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:27,930 - INFO - Step 1: Completed.
+2026-03-12 23:20:27,930 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:27,930 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:27,930 - INFO - Step 2: Completed.
+2026-03-12 23:20:27,930 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:27,930 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:27,930 - INFO - Step 3: Completed.
+2026-03-12 23:20:27,930 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:27,937 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:27,937 - INFO - Step 4: Completed.
+2026-03-12 23:20:27,937 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:27,937 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:27,937 - INFO - Step 5: Completed.
+2026-03-12 23:20:27,937 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:27,937 - INFO - Generating memory trace for variants (0, 0, 1, 6)
+2026-03-12 23:20:27,967 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:27,967 - INFO - Step 6: Completed.
+2026-03-12 23:20:27,967 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:27,967 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:27,967 - INFO - Step 7: Completed.
+2026-03-12 23:20:27,967 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:30,090 - INFO - Step 9: Completed.
+2026-03-12 23:20:30,092 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:30,521 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:30,521 - INFO - Step 6: Completed.
+2026-03-12 23:20:30,521 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:30,521 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:30,521 - INFO - Step 7: Completed.
+2026-03-12 23:20:30,521 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:31,395 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:31,395 - INFO - Step 6: Completed.
+2026-03-12 23:20:31,395 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:31,395 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:31,395 - INFO - Step 7: Completed.
+2026-03-12 23:20:31,395 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:31,440 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,5,0
+2026-03-12 23:20:31,440 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:31,440 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:31,440 - INFO - Step 1: Completed.
+2026-03-12 23:20:31,440 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:31,440 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:31,440 - INFO - Step 2: Completed.
+2026-03-12 23:20:31,440 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:31,440 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:31,440 - INFO - Step 3: Completed.
+2026-03-12 23:20:31,440 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:31,446 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:31,446 - INFO - Step 4: Completed.
+2026-03-12 23:20:31,446 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:31,446 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:31,446 - INFO - Step 5: Completed.
+2026-03-12 23:20:31,446 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:31,446 - INFO - Generating memory trace for variants (0, 0, 3, 5)
+2026-03-12 23:20:32,361 - INFO - Step 9: Completed.
+2026-03-12 23:20:32,362 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:33,375 - INFO - Step 9: Completed.
+2026-03-12 23:20:33,376 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:33,738 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,6,0
+2026-03-12 23:20:33,738 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:33,738 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:33,738 - INFO - Step 1: Completed.
+2026-03-12 23:20:33,738 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:33,738 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:33,738 - INFO - Step 2: Completed.
+2026-03-12 23:20:33,738 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:33,739 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:33,739 - INFO - Step 3: Completed.
+2026-03-12 23:20:33,739 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:33,743 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:33,744 - INFO - Step 4: Completed.
+2026-03-12 23:20:33,744 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:33,744 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:33,744 - INFO - Step 5: Completed.
+2026-03-12 23:20:33,744 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:33,744 - INFO - Generating memory trace for variants (0, 0, 2, 6)
+2026-03-12 23:20:34,715 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,7,0
+2026-03-12 23:20:34,716 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:34,716 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:34,716 - INFO - Step 1: Completed.
+2026-03-12 23:20:34,716 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:34,716 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:34,716 - INFO - Step 2: Completed.
+2026-03-12 23:20:34,716 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:34,716 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:34,716 - INFO - Step 3: Completed.
+2026-03-12 23:20:34,716 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:34,720 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:34,720 - INFO - Step 4: Completed.
+2026-03-12 23:20:34,720 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:34,720 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:34,720 - INFO - Step 5: Completed.
+2026-03-12 23:20:34,720 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:34,720 - INFO - Generating memory trace for variants (0, 0, 1, 7)
+2026-03-12 23:20:36,070 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:36,070 - INFO - Step 6: Completed.
+2026-03-12 23:20:36,070 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:36,070 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:36,070 - INFO - Step 7: Completed.
+2026-03-12 23:20:36,070 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:37,494 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:37,494 - INFO - Step 6: Completed.
+2026-03-12 23:20:37,494 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:37,494 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:37,494 - INFO - Step 7: Completed.
+2026-03-12 23:20:37,494 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:38,188 - INFO - Step 9: Completed.
+2026-03-12 23:20:38,190 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:38,371 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:38,371 - INFO - Step 6: Completed.
+2026-03-12 23:20:38,371 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:38,371 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:38,371 - INFO - Step 7: Completed.
+2026-03-12 23:20:38,371 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:39,369 - INFO - Step 9: Completed.
+2026-03-12 23:20:39,370 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:39,671 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,6,0
+2026-03-12 23:20:39,671 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:39,672 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:39,672 - INFO - Step 1: Completed.
+2026-03-12 23:20:39,672 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:39,672 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:39,672 - INFO - Step 2: Completed.
+2026-03-12 23:20:39,672 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:39,672 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:39,672 - INFO - Step 3: Completed.
+2026-03-12 23:20:39,672 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:39,678 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:39,679 - INFO - Step 4: Completed.
+2026-03-12 23:20:39,679 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:39,679 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:39,679 - INFO - Step 5: Completed.
+2026-03-12 23:20:39,679 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:39,679 - INFO - Generating memory trace for variants (0, 0, 3, 6)
+2026-03-12 23:20:40,144 - INFO - Step 9: Completed.
+2026-03-12 23:20:40,145 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:40,771 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,7,0
+2026-03-12 23:20:40,771 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:40,772 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:40,772 - INFO - Step 1: Completed.
+2026-03-12 23:20:40,772 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:40,772 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:40,772 - INFO - Step 2: Completed.
+2026-03-12 23:20:40,772 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:40,772 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:40,772 - INFO - Step 3: Completed.
+2026-03-12 23:20:40,772 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:40,777 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:40,777 - INFO - Step 4: Completed.
+2026-03-12 23:20:40,777 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:40,777 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:40,777 - INFO - Step 5: Completed.
+2026-03-12 23:20:40,777 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:40,777 - INFO - Generating memory trace for variants (0, 0, 2, 7)
+2026-03-12 23:20:41,496 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,1,8,0
+2026-03-12 23:20:41,496 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:41,496 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:41,496 - INFO - Step 1: Completed.
+2026-03-12 23:20:41,496 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:41,496 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:41,496 - INFO - Step 2: Completed.
+2026-03-12 23:20:41,496 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:41,497 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:41,497 - INFO - Step 3: Completed.
+2026-03-12 23:20:41,497 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:41,501 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:41,501 - INFO - Step 4: Completed.
+2026-03-12 23:20:41,501 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:41,501 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:41,501 - INFO - Step 5: Completed.
+2026-03-12 23:20:41,501 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:41,501 - INFO - Generating memory trace for variants (0, 0, 1, 8)
+2026-03-12 23:20:42,720 - INFO - Saved page trace to cache.
+2026-03-12 23:20:42,720 - INFO - Step 4: Completed.
+2026-03-12 23:20:42,720 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:42,720 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:42,720 - INFO - Step 5: Completed.
+2026-03-12 23:20:42,720 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:42,720 - INFO - Generating memory trace for variants (0, 0, 4, 0)
+2026-03-12 23:20:44,290 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:44,290 - INFO - Step 6: Completed.
+2026-03-12 23:20:44,290 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:44,290 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:44,290 - INFO - Step 7: Completed.
+2026-03-12 23:20:44,290 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:44,564 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:44,564 - INFO - Step 6: Completed.
+2026-03-12 23:20:44,564 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:44,564 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:44,564 - INFO - Step 7: Completed.
+2026-03-12 23:20:44,564 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:44,850 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:44,850 - INFO - Step 6: Completed.
+2026-03-12 23:20:44,850 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:44,850 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:44,850 - INFO - Step 7: Completed.
+2026-03-12 23:20:44,850 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:46,402 - INFO - Step 9: Completed.
+2026-03-12 23:20:46,404 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:46,409 - INFO - Step 9: Completed.
+2026-03-12 23:20:46,411 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:46,539 - INFO - Step 9: Completed.
+2026-03-12 23:20:46,540 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:47,868 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,2,8,0
+2026-03-12 23:20:47,868 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:47,869 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:47,869 - INFO - Step 1: Completed.
+2026-03-12 23:20:47,869 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:47,869 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:47,869 - INFO - Step 2: Completed.
+2026-03-12 23:20:47,869 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:47,869 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:47,869 - INFO - Step 3: Completed.
+2026-03-12 23:20:47,869 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:47,874 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:47,874 - INFO - Step 4: Completed.
+2026-03-12 23:20:47,874 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:47,874 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:47,874 - INFO - Step 5: Completed.
+2026-03-12 23:20:47,874 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:47,874 - INFO - Generating memory trace for variants (0, 0, 2, 8)
+2026-03-12 23:20:47,888 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,7,0
+2026-03-12 23:20:47,888 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:47,888 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:47,888 - INFO - Step 1: Completed.
+2026-03-12 23:20:47,888 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:47,888 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:47,888 - INFO - Step 2: Completed.
+2026-03-12 23:20:47,888 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:47,888 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:47,888 - INFO - Step 3: Completed.
+2026-03-12 23:20:47,889 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:47,894 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:47,894 - INFO - Step 4: Completed.
+2026-03-12 23:20:47,894 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:47,894 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:47,894 - INFO - Step 5: Completed.
+2026-03-12 23:20:47,895 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:47,895 - INFO - Generating memory trace for variants (0, 0, 3, 7)
+2026-03-12 23:20:48,015 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,0,0
+2026-03-12 23:20:48,015 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:48,015 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:48,015 - INFO - Step 1: Completed.
+2026-03-12 23:20:48,015 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:48,016 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:48,016 - INFO - Step 2: Completed.
+2026-03-12 23:20:48,016 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:48,016 - INFO - Generating Markov matrix for variant 5
+2026-03-12 23:20:48,016 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:20:48,016 - INFO - Step 3: Completed.
+2026-03-12 23:20:48,016 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:48,016 - INFO - Generating page trace for variants (0, 0, 5)
+2026-03-12 23:20:48,589 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:48,589 - INFO - Step 6: Completed.
+2026-03-12 23:20:48,589 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:48,589 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:48,589 - INFO - Step 7: Completed.
+2026-03-12 23:20:48,589 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:51,144 - INFO - Step 9: Completed.
+2026-03-12 23:20:51,147 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:51,668 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:51,668 - INFO - Step 6: Completed.
+2026-03-12 23:20:51,668 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:51,668 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:51,668 - INFO - Step 7: Completed.
+2026-03-12 23:20:51,668 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:52,512 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,1,0
+2026-03-12 23:20:52,512 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:52,512 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:52,512 - INFO - Step 1: Completed.
+2026-03-12 23:20:52,512 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:52,512 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:52,512 - INFO - Step 2: Completed.
+2026-03-12 23:20:52,512 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:52,512 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:52,512 - INFO - Step 3: Completed.
+2026-03-12 23:20:52,512 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:52,520 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:52,520 - INFO - Step 4: Completed.
+2026-03-12 23:20:52,520 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:52,520 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:52,520 - INFO - Step 5: Completed.
+2026-03-12 23:20:52,520 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:52,520 - INFO - Generating memory trace for variants (0, 0, 4, 1)
+2026-03-12 23:20:52,679 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:52,679 - INFO - Step 6: Completed.
+2026-03-12 23:20:52,679 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:52,679 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:52,679 - INFO - Step 7: Completed.
+2026-03-12 23:20:52,679 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:20:53,518 - INFO - Step 9: Completed.
+2026-03-12 23:20:53,520 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:54,831 - INFO - Step 9: Completed.
+2026-03-12 23:20:54,833 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:20:54,906 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,0,0
+2026-03-12 23:20:54,907 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:54,907 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:54,907 - INFO - Step 1: Completed.
+2026-03-12 23:20:54,907 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:54,907 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:54,907 - INFO - Step 2: Completed.
+2026-03-12 23:20:54,907 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:54,907 - INFO - Generating Markov matrix for variant 6
+2026-03-12 23:20:54,908 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:20:54,908 - INFO - Step 3: Completed.
+2026-03-12 23:20:54,908 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:54,908 - INFO - Generating page trace for variants (0, 0, 6)
+2026-03-12 23:20:56,180 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,3,8,0
+2026-03-12 23:20:56,180 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:20:56,180 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:20:56,180 - INFO - Step 1: Completed.
+2026-03-12 23:20:56,180 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:20:56,180 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:20:56,180 - INFO - Step 2: Completed.
+2026-03-12 23:20:56,180 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:20:56,180 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:20:56,180 - INFO - Step 3: Completed.
+2026-03-12 23:20:56,180 - INFO - Step 4: Generating page trace.
+2026-03-12 23:20:56,186 - INFO - Loaded page trace from cache.
+2026-03-12 23:20:56,186 - INFO - Step 4: Completed.
+2026-03-12 23:20:56,186 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:20:56,187 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:20:56,187 - INFO - Step 5: Completed.
+2026-03-12 23:20:56,187 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:20:56,187 - INFO - Generating memory trace for variants (0, 0, 3, 8)
+2026-03-12 23:20:58,197 - INFO - Saved memory trace to cache.
+2026-03-12 23:20:58,197 - INFO - Step 6: Completed.
+2026-03-12 23:20:58,197 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:20:58,197 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:20:58,197 - INFO - Step 7: Completed.
+2026-03-12 23:20:58,197 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:00,669 - INFO - Step 9: Completed.
+2026-03-12 23:21:00,672 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:00,724 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:00,725 - INFO - Step 6: Completed.
+2026-03-12 23:21:00,725 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:00,725 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:00,725 - INFO - Step 7: Completed.
+2026-03-12 23:21:00,725 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:02,021 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,2,0
+2026-03-12 23:21:02,021 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:02,022 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:02,022 - INFO - Step 1: Completed.
+2026-03-12 23:21:02,022 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:02,022 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:02,022 - INFO - Step 2: Completed.
+2026-03-12 23:21:02,022 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:02,022 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:02,022 - INFO - Step 3: Completed.
+2026-03-12 23:21:02,022 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:02,029 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:02,029 - INFO - Step 4: Completed.
+2026-03-12 23:21:02,029 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:02,030 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:02,030 - INFO - Step 5: Completed.
+2026-03-12 23:21:02,030 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:02,030 - INFO - Generating memory trace for variants (0, 0, 4, 2)
+2026-03-12 23:21:02,873 - INFO - Step 9: Completed.
+2026-03-12 23:21:02,875 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:04,467 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,0,0
+2026-03-12 23:21:04,467 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:04,468 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:04,468 - INFO - Step 1: Completed.
+2026-03-12 23:21:04,468 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:04,468 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:04,468 - INFO - Step 2: Completed.
+2026-03-12 23:21:04,468 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:04,468 - INFO - Generating Markov matrix for variant 7
+2026-03-12 23:21:04,468 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:21:04,469 - INFO - Step 3: Completed.
+2026-03-12 23:21:04,469 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:04,469 - INFO - Generating page trace for variants (0, 0, 7)
+2026-03-12 23:21:04,526 - INFO - Saved page trace to cache.
+2026-03-12 23:21:04,527 - INFO - Step 4: Completed.
+2026-03-12 23:21:04,527 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:04,527 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:04,527 - INFO - Step 5: Completed.
+2026-03-12 23:21:04,527 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:04,527 - INFO - Generating memory trace for variants (0, 0, 5, 0)
+2026-03-12 23:21:07,616 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:07,616 - INFO - Step 6: Completed.
+2026-03-12 23:21:07,616 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:07,616 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:07,616 - INFO - Step 7: Completed.
+2026-03-12 23:21:07,616 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:10,111 - INFO - Step 9: Completed.
+2026-03-12 23:21:10,113 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:11,468 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,3,0
+2026-03-12 23:21:11,468 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:11,468 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:11,468 - INFO - Step 1: Completed.
+2026-03-12 23:21:11,468 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:11,468 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:11,468 - INFO - Step 2: Completed.
+2026-03-12 23:21:11,468 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:11,468 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:11,468 - INFO - Step 3: Completed.
+2026-03-12 23:21:11,468 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:11,476 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:11,476 - INFO - Step 4: Completed.
+2026-03-12 23:21:11,476 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:11,476 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:11,476 - INFO - Step 5: Completed.
+2026-03-12 23:21:11,476 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:11,476 - INFO - Generating memory trace for variants (0, 0, 4, 3)
+2026-03-12 23:21:11,515 - INFO - Saved page trace to cache.
+2026-03-12 23:21:11,516 - INFO - Step 4: Completed.
+2026-03-12 23:21:11,516 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:11,516 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:11,516 - INFO - Step 5: Completed.
+2026-03-12 23:21:11,516 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:11,516 - INFO - Generating memory trace for variants (0, 0, 6, 0)
+2026-03-12 23:21:12,021 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:12,022 - INFO - Step 6: Completed.
+2026-03-12 23:21:12,022 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:12,022 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:12,022 - INFO - Step 7: Completed.
+2026-03-12 23:21:12,022 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:15,578 - INFO - Step 9: Completed.
+2026-03-12 23:21:15,583 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:16,981 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,1,0
+2026-03-12 23:21:16,982 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:16,982 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:16,982 - INFO - Step 1: Completed.
+2026-03-12 23:21:16,982 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:16,982 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:16,982 - INFO - Step 2: Completed.
+2026-03-12 23:21:16,982 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:16,982 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:16,982 - INFO - Step 3: Completed.
+2026-03-12 23:21:16,982 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:16,992 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:16,992 - INFO - Step 4: Completed.
+2026-03-12 23:21:16,992 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:16,992 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:16,992 - INFO - Step 5: Completed.
+2026-03-12 23:21:16,992 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:16,992 - INFO - Generating memory trace for variants (0, 0, 5, 1)
+2026-03-12 23:21:17,110 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:17,110 - INFO - Step 6: Completed.
+2026-03-12 23:21:17,110 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:17,111 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:17,111 - INFO - Step 7: Completed.
+2026-03-12 23:21:17,111 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:19,597 - INFO - Step 9: Completed.
+2026-03-12 23:21:19,599 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:20,965 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,4,0
+2026-03-12 23:21:20,965 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:20,965 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:20,966 - INFO - Step 1: Completed.
+2026-03-12 23:21:20,966 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:20,966 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:20,966 - INFO - Step 2: Completed.
+2026-03-12 23:21:20,966 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:20,966 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:20,966 - INFO - Step 3: Completed.
+2026-03-12 23:21:20,966 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:20,973 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:20,973 - INFO - Step 4: Completed.
+2026-03-12 23:21:20,973 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:20,973 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:20,973 - INFO - Step 5: Completed.
+2026-03-12 23:21:20,973 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:20,973 - INFO - Generating memory trace for variants (0, 0, 4, 4)
+2026-03-12 23:21:24,539 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:24,539 - INFO - Step 6: Completed.
+2026-03-12 23:21:24,539 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:24,539 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:24,539 - INFO - Step 7: Completed.
+2026-03-12 23:21:24,539 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:24,692 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:24,692 - INFO - Step 6: Completed.
+2026-03-12 23:21:24,692 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:24,692 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:24,692 - INFO - Step 7: Completed.
+2026-03-12 23:21:24,692 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:26,608 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:26,608 - INFO - Step 6: Completed.
+2026-03-12 23:21:26,608 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:26,608 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:26,608 - INFO - Step 7: Completed.
+2026-03-12 23:21:26,608 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:27,856 - INFO - Step 9: Completed.
+2026-03-12 23:21:27,859 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:29,158 - INFO - Step 9: Completed.
+2026-03-12 23:21:29,160 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:29,717 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,2,0
+2026-03-12 23:21:29,717 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:29,717 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:29,717 - INFO - Step 1: Completed.
+2026-03-12 23:21:29,717 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:29,717 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:29,717 - INFO - Step 2: Completed.
+2026-03-12 23:21:29,717 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:29,717 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:29,717 - INFO - Step 3: Completed.
+2026-03-12 23:21:29,717 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:29,727 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:29,727 - INFO - Step 4: Completed.
+2026-03-12 23:21:29,727 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:29,727 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:29,727 - INFO - Step 5: Completed.
+2026-03-12 23:21:29,727 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:29,727 - INFO - Generating memory trace for variants (0, 0, 5, 2)
+2026-03-12 23:21:29,961 - INFO - Step 9: Completed.
+2026-03-12 23:21:29,966 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:30,546 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,5,0
+2026-03-12 23:21:30,547 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:30,547 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:30,547 - INFO - Step 1: Completed.
+2026-03-12 23:21:30,547 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:30,547 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:30,547 - INFO - Step 2: Completed.
+2026-03-12 23:21:30,547 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:30,547 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:30,547 - INFO - Step 3: Completed.
+2026-03-12 23:21:30,547 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:30,554 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:30,554 - INFO - Step 4: Completed.
+2026-03-12 23:21:30,554 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:30,555 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:30,555 - INFO - Step 5: Completed.
+2026-03-12 23:21:30,555 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:30,555 - INFO - Generating memory trace for variants (0, 0, 4, 5)
+2026-03-12 23:21:31,318 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,1,0
+2026-03-12 23:21:31,318 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:31,318 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:31,318 - INFO - Step 1: Completed.
+2026-03-12 23:21:31,318 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:31,318 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:31,318 - INFO - Step 2: Completed.
+2026-03-12 23:21:31,318 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:31,318 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:31,318 - INFO - Step 3: Completed.
+2026-03-12 23:21:31,318 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:31,333 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:31,333 - INFO - Step 4: Completed.
+2026-03-12 23:21:31,333 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:31,333 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:31,333 - INFO - Step 5: Completed.
+2026-03-12 23:21:31,333 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:31,334 - INFO - Generating memory trace for variants (0, 0, 6, 1)
+2026-03-12 23:21:36,217 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:36,217 - INFO - Step 6: Completed.
+2026-03-12 23:21:36,217 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:36,217 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:36,217 - INFO - Step 7: Completed.
+2026-03-12 23:21:36,217 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:37,439 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:37,439 - INFO - Step 6: Completed.
+2026-03-12 23:21:37,439 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:37,439 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:37,439 - INFO - Step 7: Completed.
+2026-03-12 23:21:37,439 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:38,702 - INFO - Step 9: Completed.
+2026-03-12 23:21:38,705 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:40,063 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,6,0
+2026-03-12 23:21:40,063 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:40,063 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:40,063 - INFO - Step 1: Completed.
+2026-03-12 23:21:40,063 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:40,063 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:40,063 - INFO - Step 2: Completed.
+2026-03-12 23:21:40,063 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:40,063 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:40,063 - INFO - Step 3: Completed.
+2026-03-12 23:21:40,063 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:40,070 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:40,071 - INFO - Step 4: Completed.
+2026-03-12 23:21:40,071 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:40,071 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:40,071 - INFO - Step 5: Completed.
+2026-03-12 23:21:40,071 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:40,071 - INFO - Generating memory trace for variants (0, 0, 4, 6)
+2026-03-12 23:21:40,751 - INFO - Step 9: Completed.
+2026-03-12 23:21:40,754 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:42,095 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,3,0
+2026-03-12 23:21:42,095 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:42,095 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:42,096 - INFO - Step 1: Completed.
+2026-03-12 23:21:42,096 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:42,096 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:42,096 - INFO - Step 2: Completed.
+2026-03-12 23:21:42,096 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:42,096 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:42,096 - INFO - Step 3: Completed.
+2026-03-12 23:21:42,096 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:42,106 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:42,106 - INFO - Step 4: Completed.
+2026-03-12 23:21:42,106 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:42,106 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:42,106 - INFO - Step 5: Completed.
+2026-03-12 23:21:42,106 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:42,106 - INFO - Generating memory trace for variants (0, 0, 5, 3)
+2026-03-12 23:21:44,441 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:44,441 - INFO - Step 6: Completed.
+2026-03-12 23:21:44,441 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:44,441 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:44,441 - INFO - Step 7: Completed.
+2026-03-12 23:21:44,441 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:45,709 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:45,709 - INFO - Step 6: Completed.
+2026-03-12 23:21:45,709 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:45,709 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:45,709 - INFO - Step 7: Completed.
+2026-03-12 23:21:45,709 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:48,214 - INFO - Step 9: Completed.
+2026-03-12 23:21:48,222 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:49,586 - INFO - Step 9: Completed.
+2026-03-12 23:21:49,592 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:49,838 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:49,838 - INFO - Step 6: Completed.
+2026-03-12 23:21:49,838 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:49,838 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:49,838 - INFO - Step 7: Completed.
+2026-03-12 23:21:49,838 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:49,997 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,7,0
+2026-03-12 23:21:49,997 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:49,997 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:49,997 - INFO - Step 1: Completed.
+2026-03-12 23:21:49,997 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:49,997 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:49,997 - INFO - Step 2: Completed.
+2026-03-12 23:21:49,997 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:49,997 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:49,997 - INFO - Step 3: Completed.
+2026-03-12 23:21:49,997 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:50,004 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:50,005 - INFO - Step 4: Completed.
+2026-03-12 23:21:50,005 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:50,005 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:50,005 - INFO - Step 5: Completed.
+2026-03-12 23:21:50,005 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:50,005 - INFO - Generating memory trace for variants (0, 0, 4, 7)
+2026-03-12 23:21:51,021 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,2,0
+2026-03-12 23:21:51,021 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:51,021 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:51,021 - INFO - Step 1: Completed.
+2026-03-12 23:21:51,021 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:51,022 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:51,022 - INFO - Step 2: Completed.
+2026-03-12 23:21:51,022 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:51,022 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:51,022 - INFO - Step 3: Completed.
+2026-03-12 23:21:51,022 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:51,045 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:51,045 - INFO - Step 4: Completed.
+2026-03-12 23:21:51,045 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:51,045 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:51,045 - INFO - Step 5: Completed.
+2026-03-12 23:21:51,045 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:51,045 - INFO - Generating memory trace for variants (0, 0, 6, 2)
+2026-03-12 23:21:53,167 - INFO - Step 9: Completed.
+2026-03-12 23:21:53,171 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:21:54,731 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,4,0
+2026-03-12 23:21:54,731 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:21:54,731 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:21:54,731 - INFO - Step 1: Completed.
+2026-03-12 23:21:54,731 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:21:54,731 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:21:54,731 - INFO - Step 2: Completed.
+2026-03-12 23:21:54,731 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:21:54,731 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:21:54,731 - INFO - Step 3: Completed.
+2026-03-12 23:21:54,731 - INFO - Step 4: Generating page trace.
+2026-03-12 23:21:54,742 - INFO - Loaded page trace from cache.
+2026-03-12 23:21:54,742 - INFO - Step 4: Completed.
+2026-03-12 23:21:54,742 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:21:54,742 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:21:54,742 - INFO - Step 5: Completed.
+2026-03-12 23:21:54,742 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:21:54,742 - INFO - Generating memory trace for variants (0, 0, 5, 4)
+2026-03-12 23:21:55,675 - INFO - Saved memory trace to cache.
+2026-03-12 23:21:55,675 - INFO - Step 6: Completed.
+2026-03-12 23:21:55,675 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:21:55,675 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:21:55,675 - INFO - Step 7: Completed.
+2026-03-12 23:21:55,675 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:21:58,202 - INFO - Step 9: Completed.
+2026-03-12 23:21:58,205 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:00,084 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,4,8,0
+2026-03-12 23:22:00,084 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:00,084 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:00,084 - INFO - Step 1: Completed.
+2026-03-12 23:22:00,084 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:00,084 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:00,084 - INFO - Step 2: Completed.
+2026-03-12 23:22:00,084 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:00,084 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:00,084 - INFO - Step 3: Completed.
+2026-03-12 23:22:00,084 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:00,092 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:00,092 - INFO - Step 4: Completed.
+2026-03-12 23:22:00,092 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:00,092 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:00,092 - INFO - Step 5: Completed.
+2026-03-12 23:22:00,092 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:00,092 - INFO - Generating memory trace for variants (0, 0, 4, 8)
+2026-03-12 23:22:02,315 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:02,315 - INFO - Step 6: Completed.
+2026-03-12 23:22:02,315 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:02,315 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:02,316 - INFO - Step 7: Completed.
+2026-03-12 23:22:02,316 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:03,938 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:03,938 - INFO - Step 6: Completed.
+2026-03-12 23:22:03,938 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:03,938 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:03,938 - INFO - Step 7: Completed.
+2026-03-12 23:22:03,938 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:05,605 - INFO - Step 9: Completed.
+2026-03-12 23:22:05,609 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:05,917 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:05,917 - INFO - Step 6: Completed.
+2026-03-12 23:22:05,917 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:05,917 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:05,917 - INFO - Step 7: Completed.
+2026-03-12 23:22:05,917 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:06,978 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,5,0
+2026-03-12 23:22:06,978 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:06,978 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:06,978 - INFO - Step 1: Completed.
+2026-03-12 23:22:06,978 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:06,978 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:06,978 - INFO - Step 2: Completed.
+2026-03-12 23:22:06,979 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:06,979 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:06,979 - INFO - Step 3: Completed.
+2026-03-12 23:22:06,979 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:06,989 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:06,989 - INFO - Step 4: Completed.
+2026-03-12 23:22:06,989 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:06,989 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:06,989 - INFO - Step 5: Completed.
+2026-03-12 23:22:06,989 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:06,989 - INFO - Generating memory trace for variants (0, 0, 5, 5)
+2026-03-12 23:22:08,447 - INFO - Step 9: Completed.
+2026-03-12 23:22:08,450 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:09,111 - INFO - Step 9: Completed.
+2026-03-12 23:22:09,116 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:09,847 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,8,0,0
+2026-03-12 23:22:09,847 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:09,847 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:09,847 - INFO - Step 1: Completed.
+2026-03-12 23:22:09,847 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:09,847 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:09,847 - INFO - Step 2: Completed.
+2026-03-12 23:22:09,847 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:09,847 - INFO - Generating Markov matrix for variant 8
+2026-03-12 23:22:09,848 - INFO - Saved Markov matrix to cache.
+2026-03-12 23:22:09,848 - INFO - Step 3: Completed.
+2026-03-12 23:22:09,848 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:09,848 - INFO - Generating page trace for variants (0, 0, 8)
+2026-03-12 23:22:10,478 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,3,0
+2026-03-12 23:22:10,478 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:10,478 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:10,478 - INFO - Step 1: Completed.
+2026-03-12 23:22:10,478 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:10,478 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:10,478 - INFO - Step 2: Completed.
+2026-03-12 23:22:10,478 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:10,478 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:10,478 - INFO - Step 3: Completed.
+2026-03-12 23:22:10,478 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:10,493 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:10,493 - INFO - Step 4: Completed.
+2026-03-12 23:22:10,493 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:10,493 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:10,493 - INFO - Step 5: Completed.
+2026-03-12 23:22:10,493 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:10,493 - INFO - Generating memory trace for variants (0, 0, 6, 3)
+2026-03-12 23:22:14,877 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:14,877 - INFO - Step 6: Completed.
+2026-03-12 23:22:14,877 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:14,877 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:14,877 - INFO - Step 7: Completed.
+2026-03-12 23:22:14,877 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:18,093 - INFO - Step 9: Completed.
+2026-03-12 23:22:18,097 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:19,693 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,6,0
+2026-03-12 23:22:19,693 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:19,693 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:19,693 - INFO - Step 1: Completed.
+2026-03-12 23:22:19,693 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:19,693 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:19,693 - INFO - Step 2: Completed.
+2026-03-12 23:22:19,693 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:19,693 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:19,693 - INFO - Step 3: Completed.
+2026-03-12 23:22:19,693 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:19,703 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:19,703 - INFO - Step 4: Completed.
+2026-03-12 23:22:19,703 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:19,703 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:19,703 - INFO - Step 5: Completed.
+2026-03-12 23:22:19,703 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:19,703 - INFO - Generating memory trace for variants (0, 0, 5, 6)
+2026-03-12 23:22:23,667 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:23,667 - INFO - Step 6: Completed.
+2026-03-12 23:22:23,667 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:23,667 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:23,667 - INFO - Step 7: Completed.
+2026-03-12 23:22:23,667 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:27,315 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:27,315 - INFO - Step 6: Completed.
+2026-03-12 23:22:27,315 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:27,315 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:27,315 - INFO - Step 7: Completed.
+2026-03-12 23:22:27,315 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:28,743 - INFO - Step 9: Completed.
+2026-03-12 23:22:28,748 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:30,228 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,4,0
+2026-03-12 23:22:30,228 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:30,229 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:30,229 - INFO - Step 1: Completed.
+2026-03-12 23:22:30,229 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:30,229 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:30,229 - INFO - Step 2: Completed.
+2026-03-12 23:22:30,229 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:30,229 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:30,229 - INFO - Step 3: Completed.
+2026-03-12 23:22:30,229 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:30,243 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:30,243 - INFO - Step 4: Completed.
+2026-03-12 23:22:30,243 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:30,243 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:30,243 - INFO - Step 5: Completed.
+2026-03-12 23:22:30,243 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:30,243 - INFO - Generating memory trace for variants (0, 0, 6, 4)
+2026-03-12 23:22:30,622 - INFO - Step 9: Completed.
+2026-03-12 23:22:30,626 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:31,981 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,7,0
+2026-03-12 23:22:31,981 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:31,981 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:31,981 - INFO - Step 1: Completed.
+2026-03-12 23:22:31,981 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:31,981 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:31,981 - INFO - Step 2: Completed.
+2026-03-12 23:22:31,981 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:31,981 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:31,981 - INFO - Step 3: Completed.
+2026-03-12 23:22:31,981 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:31,991 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:31,991 - INFO - Step 4: Completed.
+2026-03-12 23:22:31,991 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:31,991 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:31,991 - INFO - Step 5: Completed.
+2026-03-12 23:22:31,991 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:31,991 - INFO - Generating memory trace for variants (0, 0, 5, 7)
+2026-03-12 23:22:39,430 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:39,430 - INFO - Step 6: Completed.
+2026-03-12 23:22:39,430 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:39,431 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:39,431 - INFO - Step 7: Completed.
+2026-03-12 23:22:39,431 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:42,662 - INFO - Step 9: Completed.
+2026-03-12 23:22:42,665 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:43,060 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:43,060 - INFO - Step 6: Completed.
+2026-03-12 23:22:43,060 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:43,060 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:43,060 - INFO - Step 7: Completed.
+2026-03-12 23:22:43,060 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:44,023 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,5,8,0
+2026-03-12 23:22:44,023 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:44,023 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:44,023 - INFO - Step 1: Completed.
+2026-03-12 23:22:44,023 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:44,023 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:44,023 - INFO - Step 2: Completed.
+2026-03-12 23:22:44,023 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:44,023 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:44,023 - INFO - Step 3: Completed.
+2026-03-12 23:22:44,023 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:44,034 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:44,034 - INFO - Step 4: Completed.
+2026-03-12 23:22:44,034 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:44,034 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:44,034 - INFO - Step 5: Completed.
+2026-03-12 23:22:44,034 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:44,034 - INFO - Generating memory trace for variants (0, 0, 5, 8)
+2026-03-12 23:22:48,193 - INFO - Step 9: Completed.
+2026-03-12 23:22:48,200 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:22:49,640 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,5,0
+2026-03-12 23:22:49,640 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:22:49,640 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:22:49,640 - INFO - Step 1: Completed.
+2026-03-12 23:22:49,640 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:22:49,640 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:22:49,640 - INFO - Step 2: Completed.
+2026-03-12 23:22:49,640 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:22:49,641 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:22:49,641 - INFO - Step 3: Completed.
+2026-03-12 23:22:49,641 - INFO - Step 4: Generating page trace.
+2026-03-12 23:22:49,667 - INFO - Loaded page trace from cache.
+2026-03-12 23:22:49,668 - INFO - Step 4: Completed.
+2026-03-12 23:22:49,668 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:49,668 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:49,668 - INFO - Step 5: Completed.
+2026-03-12 23:22:49,668 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:49,668 - INFO - Generating memory trace for variants (0, 0, 6, 5)
+2026-03-12 23:22:51,566 - INFO - Saved memory trace to cache.
+2026-03-12 23:22:51,566 - INFO - Step 6: Completed.
+2026-03-12 23:22:51,566 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:22:51,566 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:22:51,566 - INFO - Step 7: Completed.
+2026-03-12 23:22:51,566 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:22:54,795 - INFO - Saved page trace to cache.
+2026-03-12 23:22:54,795 - INFO - Step 4: Completed.
+2026-03-12 23:22:54,795 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:22:54,795 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:22:54,795 - INFO - Step 5: Completed.
+2026-03-12 23:22:54,795 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:22:54,795 - INFO - Generating memory trace for variants (0, 0, 7, 0)
+2026-03-12 23:22:54,813 - INFO - Step 9: Completed.
+2026-03-12 23:22:54,817 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:23:02,040 - INFO - Saved memory trace to cache.
+2026-03-12 23:23:02,040 - INFO - Step 6: Completed.
+2026-03-12 23:23:02,040 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:23:02,040 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:23:02,040 - INFO - Step 7: Completed.
+2026-03-12 23:23:02,040 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:23:07,096 - INFO - Step 9: Completed.
+2026-03-12 23:23:07,100 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:23:08,664 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,6,0
+2026-03-12 23:23:08,664 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:23:08,665 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:23:08,665 - INFO - Step 1: Completed.
+2026-03-12 23:23:08,665 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:23:08,665 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:23:08,665 - INFO - Step 2: Completed.
+2026-03-12 23:23:08,665 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:23:08,665 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:23:08,665 - INFO - Step 3: Completed.
+2026-03-12 23:23:08,665 - INFO - Step 4: Generating page trace.
+2026-03-12 23:23:08,679 - INFO - Loaded page trace from cache.
+2026-03-12 23:23:08,679 - INFO - Step 4: Completed.
+2026-03-12 23:23:08,679 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:23:08,679 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:23:08,679 - INFO - Step 5: Completed.
+2026-03-12 23:23:08,680 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:23:08,680 - INFO - Generating memory trace for variants (0, 0, 6, 6)
+2026-03-12 23:23:20,966 - INFO - Saved memory trace to cache.
+2026-03-12 23:23:20,966 - INFO - Step 6: Completed.
+2026-03-12 23:23:20,966 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:23:20,966 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:23:20,966 - INFO - Step 7: Completed.
+2026-03-12 23:23:20,966 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:23:26,042 - INFO - Step 9: Completed.
+2026-03-12 23:23:26,047 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:23:27,543 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,7,0
+2026-03-12 23:23:27,543 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:23:27,543 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:23:27,543 - INFO - Step 1: Completed.
+2026-03-12 23:23:27,543 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:23:27,543 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:23:27,543 - INFO - Step 2: Completed.
+2026-03-12 23:23:27,544 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:23:27,544 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:23:27,544 - INFO - Step 3: Completed.
+2026-03-12 23:23:27,544 - INFO - Step 4: Generating page trace.
+2026-03-12 23:23:27,558 - INFO - Loaded page trace from cache.
+2026-03-12 23:23:27,559 - INFO - Step 4: Completed.
+2026-03-12 23:23:27,559 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:23:27,559 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:23:27,559 - INFO - Step 5: Completed.
+2026-03-12 23:23:27,559 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:23:27,559 - INFO - Generating memory trace for variants (0, 0, 6, 7)
+2026-03-12 23:23:39,619 - INFO - Saved memory trace to cache.
+2026-03-12 23:23:39,619 - INFO - Step 6: Completed.
+2026-03-12 23:23:39,619 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:23:39,619 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:23:39,619 - INFO - Step 7: Completed.
+2026-03-12 23:23:39,619 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:23:44,709 - INFO - Step 9: Completed.
+2026-03-12 23:23:44,714 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:23:46,327 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,6,8,0
+2026-03-12 23:23:46,327 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:23:46,327 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:23:46,327 - INFO - Step 1: Completed.
+2026-03-12 23:23:46,327 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:23:46,327 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:23:46,327 - INFO - Step 2: Completed.
+2026-03-12 23:23:46,327 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:23:46,327 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:23:46,327 - INFO - Step 3: Completed.
+2026-03-12 23:23:46,327 - INFO - Step 4: Generating page trace.
+2026-03-12 23:23:46,342 - INFO - Loaded page trace from cache.
+2026-03-12 23:23:46,342 - INFO - Step 4: Completed.
+2026-03-12 23:23:46,342 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:23:46,342 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:23:46,342 - INFO - Step 5: Completed.
+2026-03-12 23:23:46,342 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:23:46,342 - INFO - Generating memory trace for variants (0, 0, 6, 8)
+2026-03-12 23:23:58,336 - INFO - Saved memory trace to cache.
+2026-03-12 23:23:58,336 - INFO - Step 6: Completed.
+2026-03-12 23:23:58,336 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:23:58,337 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:23:58,337 - INFO - Step 7: Completed.
+2026-03-12 23:23:58,337 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:24:03,388 - INFO - Step 9: Completed.
+2026-03-12 23:24:03,396 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:25:05,958 - INFO - Saved memory trace to cache.
+2026-03-12 23:25:05,958 - INFO - Step 6: Completed.
+2026-03-12 23:25:05,958 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:25:05,958 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:25:05,958 - INFO - Step 7: Completed.
+2026-03-12 23:25:05,958 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:26:09,348 - INFO - Step 9: Completed.
+2026-03-12 23:26:09,386 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:26:10,872 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,1,0
+2026-03-12 23:26:10,872 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:26:10,872 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:26:10,872 - INFO - Step 1: Completed.
+2026-03-12 23:26:10,872 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:26:10,872 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:26:10,872 - INFO - Step 2: Completed.
+2026-03-12 23:26:10,872 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:26:10,872 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:26:10,872 - INFO - Step 3: Completed.
+2026-03-12 23:26:10,872 - INFO - Step 4: Generating page trace.
+2026-03-12 23:26:11,011 - INFO - Loaded page trace from cache.
+2026-03-12 23:26:11,011 - INFO - Step 4: Completed.
+2026-03-12 23:26:11,011 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:26:11,011 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:26:11,011 - INFO - Step 5: Completed.
+2026-03-12 23:26:11,011 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:26:11,012 - INFO - Generating memory trace for variants (0, 0, 7, 1)
+2026-03-12 23:28:23,507 - INFO - Saved memory trace to cache.
+2026-03-12 23:28:23,507 - INFO - Step 6: Completed.
+2026-03-12 23:28:23,507 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:28:23,507 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:28:23,507 - INFO - Step 7: Completed.
+2026-03-12 23:28:23,507 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:29:26,612 - INFO - Step 9: Completed.
+2026-03-12 23:29:26,657 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:29:28,136 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,2,0
+2026-03-12 23:29:28,136 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:29:28,136 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:29:28,136 - INFO - Step 1: Completed.
+2026-03-12 23:29:28,136 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:29:28,136 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:29:28,136 - INFO - Step 2: Completed.
+2026-03-12 23:29:28,136 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:29:28,136 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:29:28,136 - INFO - Step 3: Completed.
+2026-03-12 23:29:28,136 - INFO - Step 4: Generating page trace.
+2026-03-12 23:29:28,277 - INFO - Loaded page trace from cache.
+2026-03-12 23:29:28,277 - INFO - Step 4: Completed.
+2026-03-12 23:29:28,277 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:29:28,277 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:29:28,277 - INFO - Step 5: Completed.
+2026-03-12 23:29:28,277 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:29:28,277 - INFO - Generating memory trace for variants (0, 0, 7, 2)
+2026-03-12 23:31:42,001 - INFO - Saved memory trace to cache.
+2026-03-12 23:31:42,001 - INFO - Step 6: Completed.
+2026-03-12 23:31:42,001 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:31:42,001 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:31:42,001 - INFO - Step 7: Completed.
+2026-03-12 23:31:42,001 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:32:44,916 - INFO - Step 9: Completed.
+2026-03-12 23:32:44,960 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:32:46,451 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,3,0
+2026-03-12 23:32:46,452 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:32:46,452 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:32:46,452 - INFO - Step 1: Completed.
+2026-03-12 23:32:46,452 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:32:46,452 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:32:46,452 - INFO - Step 2: Completed.
+2026-03-12 23:32:46,452 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:32:46,452 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:32:46,452 - INFO - Step 3: Completed.
+2026-03-12 23:32:46,452 - INFO - Step 4: Generating page trace.
+2026-03-12 23:32:46,592 - INFO - Loaded page trace from cache.
+2026-03-12 23:32:46,592 - INFO - Step 4: Completed.
+2026-03-12 23:32:46,592 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:32:46,592 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:32:46,592 - INFO - Step 5: Completed.
+2026-03-12 23:32:46,592 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:32:46,592 - INFO - Generating memory trace for variants (0, 0, 7, 3)
+2026-03-12 23:35:00,644 - INFO - Saved memory trace to cache.
+2026-03-12 23:35:00,645 - INFO - Step 6: Completed.
+2026-03-12 23:35:00,645 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:35:00,645 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:35:00,645 - INFO - Step 7: Completed.
+2026-03-12 23:35:00,645 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:36:04,387 - INFO - Step 9: Completed.
+2026-03-12 23:36:04,429 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:36:05,861 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,4,0
+2026-03-12 23:36:05,862 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:36:05,862 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:36:05,862 - INFO - Step 1: Completed.
+2026-03-12 23:36:05,862 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:36:05,862 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:36:05,862 - INFO - Step 2: Completed.
+2026-03-12 23:36:05,862 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:36:05,862 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:36:05,862 - INFO - Step 3: Completed.
+2026-03-12 23:36:05,862 - INFO - Step 4: Generating page trace.
+2026-03-12 23:36:06,003 - INFO - Loaded page trace from cache.
+2026-03-12 23:36:06,003 - INFO - Step 4: Completed.
+2026-03-12 23:36:06,003 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:36:06,003 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:36:06,003 - INFO - Step 5: Completed.
+2026-03-12 23:36:06,003 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:36:06,003 - INFO - Generating memory trace for variants (0, 0, 7, 4)
+2026-03-12 23:38:19,188 - INFO - Saved memory trace to cache.
+2026-03-12 23:38:19,188 - INFO - Step 6: Completed.
+2026-03-12 23:38:19,188 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:38:19,189 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:38:19,189 - INFO - Step 7: Completed.
+2026-03-12 23:38:19,189 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:39:22,326 - INFO - Step 9: Completed.
+2026-03-12 23:39:22,368 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:39:23,808 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,5,0
+2026-03-12 23:39:23,809 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:39:23,809 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:39:23,809 - INFO - Step 1: Completed.
+2026-03-12 23:39:23,809 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:39:23,809 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:39:23,809 - INFO - Step 2: Completed.
+2026-03-12 23:39:23,809 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:39:23,809 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:39:23,809 - INFO - Step 3: Completed.
+2026-03-12 23:39:23,809 - INFO - Step 4: Generating page trace.
+2026-03-12 23:39:23,948 - INFO - Loaded page trace from cache.
+2026-03-12 23:39:23,948 - INFO - Step 4: Completed.
+2026-03-12 23:39:23,948 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:39:23,948 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:39:23,948 - INFO - Step 5: Completed.
+2026-03-12 23:39:23,948 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:39:23,948 - INFO - Generating memory trace for variants (0, 0, 7, 5)
+2026-03-12 23:41:35,359 - INFO - Saved memory trace to cache.
+2026-03-12 23:41:35,359 - INFO - Step 6: Completed.
+2026-03-12 23:41:35,359 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:41:35,359 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:41:35,359 - INFO - Step 7: Completed.
+2026-03-12 23:41:35,359 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:42:40,977 - INFO - Step 9: Completed.
+2026-03-12 23:42:41,039 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:42:42,727 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,6,0
+2026-03-12 23:42:42,727 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:42:42,727 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:42:42,727 - INFO - Step 1: Completed.
+2026-03-12 23:42:42,727 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:42:42,727 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:42:42,727 - INFO - Step 2: Completed.
+2026-03-12 23:42:42,727 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:42:42,728 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:42:42,728 - INFO - Step 3: Completed.
+2026-03-12 23:42:42,728 - INFO - Step 4: Generating page trace.
+2026-03-12 23:42:42,867 - INFO - Loaded page trace from cache.
+2026-03-12 23:42:42,868 - INFO - Step 4: Completed.
+2026-03-12 23:42:42,868 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:42:42,868 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:42:42,868 - INFO - Step 5: Completed.
+2026-03-12 23:42:42,868 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:42:42,868 - INFO - Generating memory trace for variants (0, 0, 7, 6)
+2026-03-12 23:44:59,362 - INFO - Saved memory trace to cache.
+2026-03-12 23:44:59,362 - INFO - Step 6: Completed.
+2026-03-12 23:44:59,362 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:44:59,363 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:44:59,363 - INFO - Step 7: Completed.
+2026-03-12 23:44:59,363 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:46:21,982 - INFO - Step 9: Completed.
+2026-03-12 23:46:22,063 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:46:24,136 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,7,0
+2026-03-12 23:46:24,136 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:46:24,136 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:46:24,136 - INFO - Step 1: Completed.
+2026-03-12 23:46:24,136 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:46:24,136 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:46:24,136 - INFO - Step 2: Completed.
+2026-03-12 23:46:24,136 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:46:24,137 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:46:24,137 - INFO - Step 3: Completed.
+2026-03-12 23:46:24,137 - INFO - Step 4: Generating page trace.
+2026-03-12 23:46:24,342 - INFO - Loaded page trace from cache.
+2026-03-12 23:46:24,342 - INFO - Step 4: Completed.
+2026-03-12 23:46:24,342 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:46:24,342 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:46:24,342 - INFO - Step 5: Completed.
+2026-03-12 23:46:24,342 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:46:24,342 - INFO - Generating memory trace for variants (0, 0, 7, 7)
+2026-03-12 23:49:14,911 - INFO - Saved memory trace to cache.
+2026-03-12 23:49:14,911 - INFO - Step 6: Completed.
+2026-03-12 23:49:14,911 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:49:14,911 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:49:14,911 - INFO - Step 7: Completed.
+2026-03-12 23:49:14,911 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:50:25,280 - INFO - Step 9: Completed.
+2026-03-12 23:50:25,327 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-12 23:50:26,967 - INFO - Restoring from config file: configs/example_wide_pca.json with variants 0,0,7,8,0
+2026-03-12 23:50:26,967 - INFO - Using compressibility targets: [('lz4', 256), ('lz4', 512), ('lz4', 1024), ('lz4', 2048), ('lz4', 4096), ('zstd', 256), ('zstd', 512), ('zstd', 1024), ('zstd', 2048), ('zstd', 4096)]
+2026-03-12 23:50:26,968 - INFO - Step 1: Loading parameters from config file.
+2026-03-12 23:50:26,968 - INFO - Step 1: Completed.
+2026-03-12 23:50:26,968 - INFO - Step 2: Constructing access count distribution.
+2026-03-12 23:50:26,968 - INFO - Loaded access count distribution from cache.
+2026-03-12 23:50:26,968 - INFO - Step 2: Completed.
+2026-03-12 23:50:26,968 - INFO - Step 3: Constructing Markov matrix.
+2026-03-12 23:50:26,968 - INFO - Loaded Markov matrix from cache.
+2026-03-12 23:50:26,968 - INFO - Step 3: Completed.
+2026-03-12 23:50:26,968 - INFO - Step 4: Generating page trace.
+2026-03-12 23:50:27,130 - INFO - Loaded page trace from cache.
+2026-03-12 23:50:27,130 - INFO - Step 4: Completed.
+2026-03-12 23:50:27,130 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-12 23:50:27,130 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-12 23:50:27,130 - INFO - Step 5: Completed.
+2026-03-12 23:50:27,130 - INFO - Step 6: Generating memory trace.
+2026-03-12 23:50:27,130 - INFO - Generating memory trace for variants (0, 0, 7, 8)
+2026-03-12 23:53:05,814 - INFO - Saved memory trace to cache.
+2026-03-12 23:53:05,814 - INFO - Step 6: Completed.
+2026-03-12 23:53:05,814 - INFO - Step 7: Synthesizing timestamps.
+2026-03-12 23:53:05,814 - INFO - Loaded short interval ratio from cache.
+2026-03-12 23:53:05,814 - INFO - Step 7: Completed.
+2026-03-12 23:53:05,815 - INFO - Step 9: Generating SimTrace output.
+2026-03-12 23:54:17,211 - INFO - Step 9: Completed.
+2026-03-12 23:54:17,264 - INFO - Trace synthesis complete for config: configs/example_wide_pca.json.
+2026-03-13 05:17:29,983 - INFO - Saved page trace to cache.
+2026-03-13 05:17:29,984 - INFO - Step 4: Completed.
+2026-03-13 05:17:29,984 - INFO - Step 5: Constructing Bit Flip Rate matrix.
+2026-03-13 05:17:29,984 - INFO - Loaded Bit Flip Rate matrix from cache.
+2026-03-13 05:17:29,984 - INFO - Step 5: Completed.
+2026-03-13 05:17:29,984 - INFO - Step 6: Generating memory trace.
+2026-03-13 05:17:29,984 - INFO - Generating memory trace for variants (0, 0, 8, 0)
+2026-03-13 17:20:57,477 - INFO - Saved memory trace to cache.
+2026-03-13 17:20:57,479 - INFO - Step 6: Completed.
+2026-03-13 17:20:57,479 - INFO - Step 7: Synthesizing timestamps.
+2026-03-13 17:20:57,480 - INFO - Loaded short interval ratio from cache.
+2026-03-13 17:20:57,480 - INFO - Step 7: Completed.
+2026-03-13 17:20:57,480 - INFO - Step 9: Generating SimTrace output.

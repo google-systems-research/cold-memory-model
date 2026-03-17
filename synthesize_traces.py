@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import argparse
+import hashlib
 import math
 import pickle
 import os
@@ -26,6 +27,31 @@ from synthesis import generate_page_access_trace, get_cacheline_address, generat
 from reduction import reconstruct_counts_from_intervals, _model_markov_matrix, _model_bit_flip_matrix
 from comparison import compare_traces
 from file_io import restore_locality_parameters
+
+def _safe_pickle_load(path):
+    if not os.path.exists(path):
+        return None
+    with open(path, 'rb') as f:
+        try:
+            return pickle.load(f)
+        except (pickle.UnpicklingError, EOFError):
+            logging.warning(f"Failed to unpickle cache file: {path}")
+            return None
+
+
+def _atomic_pickle_dump(path, value):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    tmp_path = f"{path}.tmp.{os.getpid()}"
+    with open(tmp_path, 'wb') as f:
+        pickle.dump(value, f)
+    os.replace(tmp_path, path)
+
+
+def _stable_seed(*parts):
+    payload = "||".join(str(part) for part in parts).encode("utf-8")
+    digest = hashlib.blake2b(payload, digest_size=8).digest()
+    return int.from_bytes(digest, "little") % (2 ** 32)
+
 
 def _resolve_compressibility_keys(block_size_str, alg_str):
     """Return the available (algorithm, block_size) pairs requested by the user."""
@@ -55,7 +81,7 @@ def _resolve_compressibility_keys(block_size_str, alg_str):
     logging.info(f"Using compressibility targets: {selected_keys}")
     return selected_keys
 
-def _prepare_simtrace_context(trace, reuse_distance=None, short_stat=None, page_nums=None, times=None):
+def _prepare_simtrace_context(trace, reuse_distance=None, short_stat=None, page_nums=None, times=None, seed=None):
     """Prepare shared data used to emit one or more simtrace files."""
     trace = np.asarray(trace)
     max_pages = 32 * 1024 * 1024 // 4 - 1
@@ -75,7 +101,7 @@ def _prepare_simtrace_context(trace, reuse_distance=None, short_stat=None, page_
         page_nums_arg = unique_pages
 
     n_pages = len(unique_pages)
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(seed)
     random_page_nums = rng.integers(0, max_pages, size=n_pages, endpoint=False, dtype=np.int64)
 
     return {
@@ -85,6 +111,7 @@ def _prepare_simtrace_context(trace, reuse_distance=None, short_stat=None, page_
         'timestamps': timestamps,
         'n_pages': n_pages,
         'random_page_nums': random_page_nums,
+        'seed': seed,
     }
 
 def _write_simtrace_outputs(sim_ctx, output_targets, compression_keys):
@@ -93,6 +120,7 @@ def _write_simtrace_outputs(sim_ctx, output_targets, compression_keys):
         os.makedirs(output_dir, exist_ok=True)
 
     for alg, block_size in compression_keys:
+        sim_seed = _stable_seed(sim_ctx.get('seed', 0), alg, block_size)
         sim_trace = np.array(
             generate_simtrace(
                 sim_ctx['trace'],
@@ -102,6 +130,7 @@ def _write_simtrace_outputs(sim_ctx, output_targets, compression_keys):
                 sim_ctx['synth'],
                 sim_ctx['page_nums'],
                 sim_ctx['timestamps'],
+                seed=sim_seed,
             )
         )
         trace_body = '\n'.join(sim_trace.astype(str))
@@ -228,15 +257,15 @@ def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_
     cache_dir = os.path.join('output_traces', config_name, 'cache')
     os.makedirs(cache_dir, exist_ok=True)
 
-    # Define paths for each step's cache
-    access_dist_cache_path = os.path.join(cache_dir, 'access_dist.pkl')
-    mm_cache_path = os.path.join(cache_dir, 'markov_matrix.pkl')
-    page_trace_cache_path = os.path.join(cache_dir, 'page_trace.pkl')
-    bfr_cache_path = os.path.join(cache_dir, 'bit_flip_rate.pkl')
-    mem_trace_cache_path = os.path.join(cache_dir, 'mem_trace.pkl')
-    sir_cache_path = os.path.join(cache_dir, 'short_interval_ratio.pkl')
-
     variants = tuple(int(v.strip()) for v in variants_str.split(','))
+    v0, v1, v2, v3, v4 = variants
+
+    access_dist_cache_path = os.path.join(cache_dir, f'access_dist_ws{v0}_ac{v1}.pkl')
+    mm_cache_path = os.path.join(cache_dir, f'markov_matrix_tl{v2}.pkl')
+    page_trace_cache_path = os.path.join(cache_dir, f'page_trace_ws{v0}_ac{v1}_tl{v2}.pkl')
+    bfr_cache_path = os.path.join(cache_dir, f'bit_flip_rate_sl{v3}.pkl')
+    mem_trace_cache_path = os.path.join(cache_dir, f'mem_trace_ws{v0}_ac{v1}_tl{v2}_sl{v3}.pkl')
+    sir_cache_path = os.path.join(cache_dir, f'short_interval_ratio_ts{v4}.pkl')
 
     with open(config_path, 'r') as f:
         all_params = json.load(f)
@@ -254,55 +283,33 @@ def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_
         logging.error(f"Error selecting variants: {e}")
         return None
     
-    # Initialize dictionaries
-    total_access_counts, access_dists = {}, {}
-    MM_dict = {}
-    page_trace_dict, reuse_dist_dict = {}, {}
-    BFR_dict = {}
-    mem_trace_dict, multi_reuse_dist_dict = {}, {}
-    SIR_dict = {}
-
     # Step 2: Construct access count distribution
     logging.info("Step 2: Constructing access count distribution.")
-    if not no_cache and os.path.exists(access_dist_cache_path):
-        with open(access_dist_cache_path, 'rb') as f:
-            try:
-                total_access_counts, access_dists = pickle.load(f)
-                logging.info("Loaded access count distribution from cache.")
-            except (pickle.UnpicklingError, EOFError):
-                logging.warning(f"Failed to unpickle cache file: {access_dist_cache_path}")
-
-    if (variants[0], variants[1]) not in total_access_counts:
+    access_dist_payload = None if no_cache else _safe_pickle_load(access_dist_cache_path)
+    if access_dist_payload is not None:
+        total_access_count, access_dist = access_dist_payload
+        logging.info("Loaded access count distribution from cache.")
+    else:
         logging.info(f"Generating access count distribution for variants {(variants[0], variants[1])}")
         edges = [1, 2, 10, 50, 100, 1000, 10000]
         total_pages = working_set_size
         s_list = np.array(access_count_distribution["pages_in_percent"]) * total_pages // 100
         w_list = s_list * np.array(access_count_distribution["avg_accesses"]) // 1
         total_access_count = w_list.sum()
-        total_access_counts[(variants[0], variants[1])] = total_access_count
         dist = reconstruct_counts_from_intervals(edges, s_list.astype(int).tolist(), w_list.astype(int).tolist())
         x_dist = np.array(sorted(dist))
         y_dist = np.array([dist[x] for x in x_dist])
-        access_dist =  (x_dist, y_dist)
-        access_dists[(variants[0], variants[1])] = access_dist
-        with open(access_dist_cache_path, 'wb') as f:
-            pickle.dump((total_access_counts, access_dists), f)
+        access_dist = (x_dist, y_dist)
+        _atomic_pickle_dump(access_dist_cache_path, (total_access_count, access_dist))
         logging.info("Saved access count distribution to cache.")
-    
-    access_dist = access_dists[(variants[0], variants[1])]
     logging.info("Step 2: Completed.")
 
     # Step 3: Construct Markov matrix
     logging.info("Step 3: Constructing Markov matrix.")
-    if not no_cache and os.path.exists(mm_cache_path):
-        with open(mm_cache_path, 'rb') as f:
-            try:
-                MM_dict = pickle.load(f)
-                logging.info("Loaded Markov matrix from cache.")
-            except (pickle.UnpicklingError, EOFError):
-                logging.warning(f"Failed to unpickle cache file: {mm_cache_path}")
-
-    if variants[2] not in MM_dict:
+    MM = None if no_cache else _safe_pickle_load(mm_cache_path)
+    if MM is not None:
+        logging.info("Loaded Markov matrix from cache.")
+    else:
         logging.info(f"Generating Markov matrix for variant {variants[2]}")
         N=12
         peak_list = []
@@ -317,54 +324,41 @@ def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_
         params.extend(markov_matrix["amplitudes"])
         MM = _model_markov_matrix(params, peak_list, N)
         for i in range(N):
-            MM[:,i] = MM[:,i] / MM[:,i].sum()
-        MM_dict[variants[2]] = MM
-        with open(mm_cache_path, 'wb') as f:
-            pickle.dump(MM_dict, f)
+            col_sum = MM[:, i].sum()
+            if col_sum > 0:
+                MM[:, i] = MM[:, i] / col_sum
+        _atomic_pickle_dump(mm_cache_path, MM)
         logging.info("Saved Markov matrix to cache.")
-    
-    MM = MM_dict[variants[2]]
     logging.info("Step 3: Completed.")
     
     # Step 4: Generate page trace
     logging.info("Step 4: Generating page trace.")
-    if not no_cache and os.path.exists(page_trace_cache_path):
-        with open(page_trace_cache_path, 'rb') as f:
-            try:
-                page_trace_dict, reuse_dist_dict = pickle.load(f)
-                logging.info("Loaded page trace from cache.")
-            except (pickle.UnpicklingError, EOFError):
-                logging.warning(f"Failed to unpickle cache file: {page_trace_cache_path}")
-
-    if (variants[0], variants[1], variants[2]) not in page_trace_dict:
+    page_trace_payload = None if no_cache else _safe_pickle_load(page_trace_cache_path)
+    if page_trace_payload is not None:
+        page_trace, reuse_dist = page_trace_payload
+        logging.info("Loaded page trace from cache.")
+    else:
         logging.info(f"Generating page trace for variants {(variants[0], variants[1], variants[2])}")
         num_blocks = working_set_size
         counts, count_freq = access_dist
         MM_list = {i: list(MM[:,i]) for i in range(12)}
         for r in range(12):
-            MM_list[r] /= sum(MM_list[r])
+            MM_list[r] = np.asarray(MM_list[r], dtype=float)
+            col_sum = np.sum(MM_list[r])
+            if col_sum > 0:
+                MM_list[r] /= col_sum
+        np.random.seed(_stable_seed(config_name, "page_trace", v0, v1, v2))
         page_trace, reuse_dist = generate_page_access_trace(list(range(0, 100000)), [], num_blocks, num_blocks, MM_list, list(counts), np.array(count_freq), False)
-        page_trace_dict[(variants[0], variants[1], variants[2])] = page_trace
-        reuse_dist_dict[(variants[0], variants[1], variants[2])] = reuse_dist
-        with open(page_trace_cache_path, 'wb') as f:
-            pickle.dump((page_trace_dict, reuse_dist_dict), f)
+        _atomic_pickle_dump(page_trace_cache_path, (page_trace, reuse_dist))
         logging.info("Saved page trace to cache.")
-
-    page_trace = page_trace_dict[(variants[0], variants[1], variants[2])]
-    reuse_dist = reuse_dist_dict[(variants[0], variants[1], variants[2])]
     logging.info("Step 4: Completed.")
 
     # Step 5: Construct Bit Flip Rate matrix
     logging.info("Step 5: Constructing Bit Flip Rate matrix.")
-    if not no_cache and os.path.exists(bfr_cache_path):
-        with open(bfr_cache_path, 'rb') as f:
-            try:
-                BFR_dict = pickle.load(f)
-                logging.info("Loaded Bit Flip Rate matrix from cache.")
-            except (pickle.UnpicklingError, EOFError):
-                logging.warning(f"Failed to unpickle cache file: {bfr_cache_path}")
-
-    if variants[3] not in BFR_dict:
+    BFR = None if no_cache else _safe_pickle_load(bfr_cache_path)
+    if BFR is not None:
+        logging.info("Loaded Bit Flip Rate matrix from cache.")
+    else:
         logging.info(f"Generating Bit Flip Rate matrix for variant {variants[3]}")
         N_bfr = 6
         M_bfr = 11
@@ -375,47 +369,31 @@ def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_
     
         BFR = _model_bit_flip_matrix(params, peak_coords, N_bfr, M_bfr)
         BFR = [row for row in  1 - BFR]
-        BFR_dict[variants[3]] = BFR
-        with open(bfr_cache_path, 'wb') as f:
-            pickle.dump(BFR_dict, f)
+        _atomic_pickle_dump(bfr_cache_path, BFR)
         logging.info("Saved Bit Flip Rate matrix to cache.")
-    
-    BFR = BFR_dict[variants[3]]
     logging.info("Step 5: Completed.")
 
     # Step 6: Generate memory trace
     logging.info("Step 6: Generating memory trace.")
-    if not no_cache and os.path.exists(mem_trace_cache_path):
-        with open(mem_trace_cache_path, 'rb') as f:
-            try:
-                mem_trace_dict, multi_reuse_dist_dict = pickle.load(f)
-                logging.info("Loaded memory trace from cache.")
-            except (pickle.UnpicklingError, EOFError):
-                logging.warning(f"Failed to unpickle cache file: {mem_trace_cache_path}")
-
-    if (variants[0], variants[1], variants[2], variants[3]) not in mem_trace_dict:
+    mem_trace_payload = None if no_cache else _safe_pickle_load(mem_trace_cache_path)
+    if mem_trace_payload is not None:
+        mem_trace, multi_reuse_dist = mem_trace_payload
+        logging.info("Loaded memory trace from cache.")
+    else:
         logging.info(f"Generating memory trace for variants {(variants[0], variants[1], variants[2], variants[3])}")
+        np.random.seed(_stable_seed(config_name, "mem_trace", v0, v1, v2, v3))
         mem_trace, multi_rd = get_cacheline_address(page_trace, reuse_dist, BFR, (variants[0], variants[1], variants[2], variants[3]))
-        mem_trace_dict[(variants[0], variants[1], variants[2], variants[3])] = mem_trace
-        multi_reuse_dist_dict.update(multi_rd)
-        with open(mem_trace_cache_path, 'wb') as f:
-            pickle.dump((mem_trace_dict, multi_reuse_dist_dict), f)
+        multi_reuse_dist = multi_rd
+        _atomic_pickle_dump(mem_trace_cache_path, (mem_trace, multi_reuse_dist))
         logging.info("Saved memory trace to cache.")
-    
-    mem_trace = mem_trace_dict[(variants[0], variants[1], variants[2], variants[3])]
     logging.info("Step 6: Completed.")
     
     # Step 7: Construct timestamp
     logging.info("Step 7: Synthesizing timestamps.")
-    if not no_cache and os.path.exists(sir_cache_path):
-        with open(sir_cache_path, 'rb') as f:
-            try:
-                SIR_dict = pickle.load(f)
-                logging.info("Loaded short interval ratio from cache.")
-            except (pickle.UnpicklingError, EOFError):
-                logging.warning(f"Failed to unpickle cache file: {sir_cache_path}")
-
-    if variants[4] not in SIR_dict:
+    sir = None if no_cache else _safe_pickle_load(sir_cache_path)
+    if sir is not None:
+        logging.info("Loaded short interval ratio from cache.")
+    else:
         logging.info(f"Generating short interval ratio for variant {variants[4]}")
         vertex = short_interval_ratio["vertices"]
         xs, ys = zip(*vertex)
@@ -423,12 +401,8 @@ def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_
         coeff = np.polyfit(xs,ys,deg=2)
         poly = np.poly1d(coeff)
         sir = [float(poly(x)) for x in range(0, 12)]
-        SIR_dict[variants[4]] = sir
-        with open(sir_cache_path, 'wb') as f:
-            pickle.dump(SIR_dict, f)
+        _atomic_pickle_dump(sir_cache_path, sir)
         logging.info("Saved short interval ratio to cache.")
-    
-    sir = SIR_dict[variants[4]]
     logging.info("Step 7: Completed.")
     
     # Generate SimTrace output
@@ -437,6 +411,7 @@ def synthesize_trace_from_config(config_path, variants_str, block_size_str, alg_
         mem_trace,
         reuse_distance=reuse_dist,
         short_stat=sir,
+        seed=_stable_seed(config_name, "sim_ctx", v0, v1, v2, v3, v4),
     )
     _write_simtrace_outputs(
         sim_ctx,
@@ -507,6 +482,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
             else:
                 MM_list[r] = np.zeros_like(MM_list[r], dtype=float)
 
+        np.random.seed(_stable_seed(trace_name, "reduced_page_trace"))
         reduced_page_trace, reduced_reuse_distance = generate_page_access_trace(
             dist_range,
             cdf_values,
@@ -519,6 +495,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
             reduced_dir if compare_with_reference else None,
         )
         tmp_dict = {}
+        np.random.seed(_stable_seed(trace_name, "reduced_mem_trace"))
         reduced_synthesized_trace, tmp_dict = get_cacheline_address(reduced_page_trace, reduced_reuse_distance, bit_flip_matrix, trace_name)
         reduced_synth_traces_dict[trace_name] = reduced_synthesized_trace
         reduced_rd_dict.update(tmp_dict)
@@ -538,6 +515,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
         reduced_synthesized_trace,
         reuse_distance=reduced_reuse_distance,
         short_stat=short_interval_ratio,
+        seed=_stable_seed(trace_name, "reduced_sim_ctx"),
     )
     _write_simtrace_outputs(
         reduced_sim_ctx,
@@ -575,6 +553,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
             }
 
             dist_range, cdf_values, inf_count, compare_with_reference = _get_reuse_distance_inputs(full_params, num_blocks)
+            np.random.seed(_stable_seed(trace_name, "full_page_trace"))
             page_trace, reuse_distance = generate_page_access_trace(
                 dist_range,
                 cdf_values,
@@ -587,6 +566,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
                 full_dir if compare_with_reference else None,
             )
             tmp_dict = {}
+            np.random.seed(_stable_seed(trace_name, "full_mem_trace"))
             full_synthesized_trace, tmp_dict = get_cacheline_address(page_trace, reuse_distance, bit_flip_matrix, f'{trace_name}_full')
             full_synth_traces_dict[trace_name] = full_synthesized_trace
             full_rd_dict.update(tmp_dict)
@@ -607,6 +587,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
             full_synthesized_trace,
             reuse_distance=reuse_distance,
             short_stat=short_interval_ratio,
+            seed=_stable_seed(trace_name, "full_sim_ctx"),
         )
         _write_simtrace_outputs(
             full_sim_ctx,
@@ -630,6 +611,7 @@ def synthesize_trace_reconstructed(trace_name, full_params, reduced_params, bloc
             trace,
             page_nums=pages,
             times=times,
+            seed=_stable_seed(trace_name, "base_sim_ctx"),
         )
         _write_simtrace_outputs(
             base_sim_ctx,

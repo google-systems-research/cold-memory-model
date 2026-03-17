@@ -397,7 +397,7 @@ def parse_compressibility():
     _COMPRESSIBILITY_CACHE = compressibility_dfs
     return compressibility_dfs
 
-def generate_simtrace(trace, key, random_page_nums, n_pages, synth, page_nums=[], times=[]):
+def generate_simtrace(trace, key, random_page_nums, n_pages, synth, page_nums=[], times=[], seed=None):
     cycle_to_latency = 0.33
     compress_threshold = 80
     #############################
@@ -409,7 +409,7 @@ def generate_simtrace(trace, key, random_page_nums, n_pages, synth, page_nums=[]
     simulation_lines = []
 
     comp_pool_np = comp_pool.to_numpy(copy=False)
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(seed)
     sample_idx = rng.choice(comp_pool_np.shape[0], n_pages, replace=True)
     sampled_vars = comp_pool_np[sample_idx]
     mask_high = sampled_vars[:, 0] > compress_threshold
