@@ -1,11 +1,12 @@
 output_traces/*
 locality_params/*
-compressibility/64*
-compressibility/128*
-compressibility/*pickle
+compressibility
 input_traces/*
 CLAUDE.md
 .venv/
 venv/
 __pycache__/
 analyzer.log
+old
+synthesizer.log
+logs
